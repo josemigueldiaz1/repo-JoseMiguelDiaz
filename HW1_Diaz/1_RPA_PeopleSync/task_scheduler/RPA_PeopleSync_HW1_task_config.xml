@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Description>RPA - Registro automatico de personal en PeopleSync (Tarea HW1)</Description>
+    <URI>\RPA_PeopleSync_HW1</URI>
+  </RegistrationInfo>
+  <Principals>
+    <Principal id="Author">
+      <UserId>S-1-5-21-2591043610-2822639981-4045637597-1001</UserId>
+      <LogonType>InteractiveToken</LogonType>
+    </Principal>
+  </Principals>
+  <Settings>
+    <DisallowStartIfOnBatteries>true</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>true</StopIfGoingOnBatteries>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <IdleSettings>
+      <Duration>PT10M</Duration>
+      <WaitTimeout>PT1H</WaitTimeout>
+      <StopOnIdleEnd>true</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+  </Settings>
+  <Triggers>
+    <CalendarTrigger>
+      <StartBoundary>2026-08-26T03:00:00-04:00</StartBoundary>
+      <ScheduleByDay>
+        <DaysInterval>1</DaysInterval>
+      </ScheduleByDay>
+    </CalendarTrigger>
+  </Triggers>
+  <Actions Context="Author">
+    <Exec>
+      <Command>C:\Users\josem\AppData\Local\Programs\Python\Python312\python.exe</Command>
+      <Arguments>"1. RPA Automation — PeopleSync Income Registration.py" --excel "c:\Users\josem\OneDrive\Documentos\GitHub\personal\HW1_Diaz\1_RPA_PeopleSync\input\Ingreso_Personal_Agosto.xlsx" --log-file "c:\Users\josem\OneDrive\Documentos\GitHub\personal\HW1_Diaz\1_RPA_PeopleSync\logs\rpa_registro_personal.log" --report-omitidos "c:\Users\josem\OneDrive\Documentos\GitHub\personal\HW1_Diaz\1_RPA_PeopleSync\output\registros_omitidos.csv"</Arguments>
+      <WorkingDirectory>c:\Users\josem\OneDrive\Documentos\GitHub\personal\HW1_Diaz\1_RPA_PeopleSync\script</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>
