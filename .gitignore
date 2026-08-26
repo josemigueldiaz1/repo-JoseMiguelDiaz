@@ -1,0 +1,8 @@
+# Credenciales locales (nunca se suben al repositorio)
+.env
+*.env
+!.env.example
+
+# Artefactos temporales de Python
+__pycache__/
+*.pyc
