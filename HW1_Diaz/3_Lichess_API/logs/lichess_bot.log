@@ -1,53 +1,19 @@
-2026-08-26 17:07:24,732 [INFO] Iniciando script de Lichess API
-2026-08-26 17:07:24,732 [INFO] ===== PARTE A: analisis de partidas de 'DrNykterstein' =====
-2026-08-26 17:07:25,981 [ERROR] No se pudo descargar partidas de Lichess: 404 Client Error: Not Found for url: https://lichess.org/api/games/user/DrNykterstein?max=100&moves=false&opening=false&clocks=false&evals=false
-2026-08-26 17:07:26,993 [INFO] ===== PARTE B: automatizacion de torneos =====
-2026-08-26 17:07:26,993 [INFO] Modo de ejecucion: SIMULACION (dry-run)
-2026-08-26 17:07:26,993 [INFO] Se omite 'Blitz Nocturno': su horario (2026-08-24 20:00) ya paso esta semana.
-2026-08-26 17:07:26,993 [INFO] [DRY-RUN] Se crearia el torneo 'Rapid de Miercoles' el 2026-08-26 19:00 con parametros: {'name': 'Rapid de Miercoles', 'clockTime': 10, 'clockIncrement': 0, 'minutes': 90, 'startDate': 1787785200000, 'variant': 'standard', 'rated': 'true'}
-2026-08-26 17:07:27,997 [INFO] [DRY-RUN] Se crearia el torneo 'Bullet Viernes' el 2026-08-28 21:00 con parametros: {'name': 'Bullet Viernes', 'clockTime': 1, 'clockIncrement': 0, 'minutes': 45, 'startDate': 1787965200000, 'variant': 'standard', 'rated': 'true'}
-2026-08-26 17:07:28,998 [INFO] [DRY-RUN] Se crearia el torneo 'Chess960 Sabatino' el 2026-08-29 15:00 con parametros: {'name': 'Chess960 Sabatino', 'clockTime': 3, 'clockIncrement': 2, 'minutes': 60, 'startDate': 1788030000000, 'variant': 'chess960', 'rated': 'true'}
-2026-08-26 17:07:28,998 [INFO] Resumen Parte B -> creados/simulados: 3, omitidos (horario pasado): 1, fallidos: 0
-2026-08-26 17:07:28,998 [INFO] Proceso finalizado.
-2026-08-26 17:09:02,079 [INFO] Iniciando script de Lichess API
-2026-08-26 17:09:02,079 [INFO] ===== PARTE A: analisis de partidas de 'DrNykterstein' =====
-2026-08-26 17:09:03,047 [WARNING] Rate limit alcanzado (intento 1/3). Esperando 60s.
-2026-08-26 17:10:04,589 [WARNING] Rate limit alcanzado (intento 2/3). Esperando 60s.
-2026-08-26 17:11:05,711 [WARNING] Rate limit alcanzado (intento 3/3). Esperando 60s.
-2026-08-26 17:12:05,712 [ERROR] No se pudo descargar partidas de Lichess: 429 Client Error: Too Many Requests for url: https://lichess.org/api/games/user/DrNykterstein?max=100&moves=false&opening=false&clocks=false&evals=false
-2026-08-26 17:12:06,715 [INFO] ===== PARTE B: automatizacion de torneos =====
-2026-08-26 17:12:06,715 [INFO] Modo de ejecucion: SIMULACION (dry-run)
-2026-08-26 17:12:06,715 [INFO] Se omite 'Blitz Nocturno': su horario (2026-08-24 20:00) ya paso esta semana.
-2026-08-26 17:12:06,715 [INFO] [DRY-RUN] Se crearia el torneo 'Rapid de Miercoles' el 2026-08-26 19:00 con parametros: {'name': 'Rapid de Miercoles', 'clockTime': 10, 'clockIncrement': 0, 'minutes': 90, 'startDate': 1787785200000, 'variant': 'standard', 'rated': 'true'}
-2026-08-26 17:12:07,717 [INFO] [DRY-RUN] Se crearia el torneo 'Bullet Viernes' el 2026-08-28 21:00 con parametros: {'name': 'Bullet Viernes', 'clockTime': 1, 'clockIncrement': 0, 'minutes': 45, 'startDate': 1787965200000, 'variant': 'standard', 'rated': 'true'}
-2026-08-26 17:12:08,718 [INFO] [DRY-RUN] Se crearia el torneo 'Chess960 Sabatino' el 2026-08-29 15:00 con parametros: {'name': 'Chess960 Sabatino', 'clockTime': 3, 'clockIncrement': 2, 'minutes': 60, 'startDate': 1788030000000, 'variant': 'chess960', 'rated': 'true'}
-2026-08-26 17:12:08,718 [INFO] Resumen Parte B -> creados/simulados: 3, omitidos (horario pasado): 1, fallidos: 0
-2026-08-26 17:12:08,718 [INFO] Proceso finalizado.
-2026-08-26 17:22:54,173 [INFO] Iniciando script de Lichess API
-2026-08-26 17:22:54,173 [INFO] ===== PARTE A: analisis de partidas de 'DrNykterstein' =====
-2026-08-26 17:22:55,465 [WARNING] Rate limit alcanzado (intento 1/3). Esperando 60s.
-2026-08-26 17:23:56,480 [WARNING] Rate limit alcanzado (intento 2/3). Esperando 60s.
-2026-08-26 17:24:58,434 [WARNING] Rate limit alcanzado (intento 3/3). Esperando 60s.
-2026-08-26 17:25:58,437 [ERROR] No se pudo descargar partidas de Lichess: 429 Client Error: Too Many Requests for url: https://lichess.org/api/games/user/DrNykterstein?max=100&moves=false&opening=false&clocks=false&evals=false
-2026-08-26 17:25:59,441 [INFO] ===== PARTE B: automatizacion de torneos =====
-2026-08-26 17:25:59,441 [INFO] Modo de ejecucion: SIMULACION (dry-run)
-2026-08-26 17:25:59,441 [INFO] Se omite 'Blitz Nocturno': su horario (2026-08-24 20:00) ya paso esta semana.
-2026-08-26 17:25:59,441 [INFO] [DRY-RUN] Se crearia el torneo 'Rapid de Miercoles' el 2026-08-26 19:00 con parametros: {'name': 'Rapid de Miercoles', 'clockTime': 10, 'clockIncrement': 0, 'minutes': 90, 'startDate': 1787785200000, 'variant': 'standard', 'rated': 'true'}
-2026-08-26 17:26:00,442 [INFO] [DRY-RUN] Se crearia el torneo 'Bullet Viernes' el 2026-08-28 21:00 con parametros: {'name': 'Bullet Viernes', 'clockTime': 1, 'clockIncrement': 0, 'minutes': 45, 'startDate': 1787965200000, 'variant': 'standard', 'rated': 'true'}
-2026-08-26 17:26:01,442 [INFO] [DRY-RUN] Se crearia el torneo 'Chess960 Sabatino' el 2026-08-29 15:00 con parametros: {'name': 'Chess960 Sabatino', 'clockTime': 3, 'clockIncrement': 2, 'minutes': 60, 'startDate': 1788030000000, 'variant': 'chess960', 'rated': 'true'}
-2026-08-26 17:26:01,442 [INFO] Resumen Parte B -> creados/simulados: 3, omitidos (horario pasado): 1, fallidos: 0
-2026-08-26 17:26:01,442 [INFO] Proceso finalizado.
-2026-08-26 17:33:56,149 [INFO] Iniciando script de Lichess API
-2026-08-26 17:33:56,149 [INFO] ===== PARTE A: analisis de partidas de 'DrNykterstein' =====
-2026-08-26 17:33:57,290 [WARNING] Rate limit alcanzado (intento 1/3). Esperando 60s.
-2026-08-26 17:34:58,266 [WARNING] Rate limit alcanzado (intento 2/3). Esperando 60s.
-2026-08-26 17:35:59,828 [WARNING] Rate limit alcanzado (intento 3/3). Esperando 60s.
-2026-08-26 17:36:59,833 [ERROR] No se pudo descargar partidas de Lichess: 429 Client Error: Too Many Requests for url: https://lichess.org/api/games/user/DrNykterstein?max=100&moves=false&opening=false&clocks=false&evals=false
-2026-08-26 17:37:00,839 [INFO] ===== PARTE B: automatizacion de torneos =====
-2026-08-26 17:37:00,839 [INFO] Modo de ejecucion: SIMULACION (dry-run)
-2026-08-26 17:37:00,839 [INFO] Se omite 'Blitz Nocturno': su horario (2026-08-24 20:00) ya paso esta semana.
-2026-08-26 17:37:00,841 [INFO] [DRY-RUN] Se crearia el torneo 'Rapid de Miercoles' el 2026-08-26 19:00 con parametros: {'name': 'Rapid de Miercoles', 'clockTime': 10, 'clockIncrement': 0, 'minutes': 90, 'startDate': 1787785200000, 'variant': 'standard', 'rated': 'true'}
-2026-08-26 17:37:01,842 [INFO] [DRY-RUN] Se crearia el torneo 'Bullet Viernes' el 2026-08-28 21:00 con parametros: {'name': 'Bullet Viernes', 'clockTime': 1, 'clockIncrement': 0, 'minutes': 45, 'startDate': 1787965200000, 'variant': 'standard', 'rated': 'true'}
-2026-08-26 17:37:02,844 [INFO] [DRY-RUN] Se crearia el torneo 'Chess960 Sabatino' el 2026-08-29 15:00 con parametros: {'name': 'Chess960 Sabatino', 'clockTime': 3, 'clockIncrement': 2, 'minutes': 60, 'startDate': 1788030000000, 'variant': 'chess960', 'rated': 'true'}
-2026-08-26 17:37:02,844 [INFO] Resumen Parte B -> creados/simulados: 3, omitidos (horario pasado): 1, fallidos: 0
-2026-08-26 17:37:02,844 [INFO] Proceso finalizado.
+2026-08-26 19:34:54,596 [INFO] Iniciando script de Lichess API
+2026-08-26 19:34:54,596 [INFO] ===== PARTE A: analisis de partidas de 'DrNykterstein' =====
+2026-08-26 19:35:04,071 [INFO] Partidas descargadas: 100
+2026-08-26 19:35:36,757 [INFO] Iniciando script de Lichess API
+2026-08-26 19:35:36,757 [INFO] ===== PARTE A: analisis de partidas de 'DrNykterstein' =====
+2026-08-26 19:35:46,182 [INFO] Partidas descargadas: 100
+2026-08-26 19:35:46,439 [INFO] Resultados: [{'resultado': 'win', 'cantidad': 72, 'porcentaje': 72.0}, {'resultado': 'loss', 'cantidad': 20, 'porcentaje': 20.0}, {'resultado': 'draw', 'cantidad': 8, 'porcentaje': 8.0}]
+2026-08-26 19:35:46,439 [INFO] Por color: [{'color': 'black', 'partidas': 50, 'victorias': 38, 'pct_victorias': 76.0}, {'color': 'white', 'partidas': 50, 'victorias': 34, 'pct_victorias': 68.0}]
+2026-08-26 19:35:46,440 [INFO] Por modalidad: [{'modalidad': 'blitz', 'partidas': 2, 'victorias': 2, 'pct_victorias': 100.0}, {'modalidad': 'bullet', 'partidas': 98, 'victorias': 70, 'pct_victorias': 71.4}]
+2026-08-26 19:35:46,440 [INFO] Resumen de rating: [{'rating_inicial': 3079, 'rating_final': 3145, 'rating_minimo': 2988, 'rating_maximo': 3289, 'rating_promedio': 3168.0}]
+2026-08-26 19:35:46,440 [INFO] CSVs y graficos guardados en: C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW1_Diaz\3_Lichess_API\script\lichess_output
+2026-08-26 19:35:47,441 [INFO] ===== PARTE B: automatizacion de torneos =====
+2026-08-26 19:35:47,441 [INFO] Modo de ejecucion: SIMULACION (dry-run)
+2026-08-26 19:35:47,441 [INFO] Se omite 'Blitz Nocturno': su horario (2026-08-24 20:00) ya paso esta semana.
+2026-08-26 19:35:47,441 [INFO] Se omite 'Rapid de Miercoles': su horario (2026-08-26 19:00) ya paso esta semana.
+2026-08-26 19:35:47,441 [INFO] [DRY-RUN] Se crearia el torneo 'Bullet Viernes' el 2026-08-28 21:00 con parametros: {'name': 'Bullet Viernes', 'clockTime': 1, 'clockIncrement': 0, 'minutes': 45, 'startDate': 1787965200000, 'variant': 'standard', 'rated': 'true'}
+2026-08-26 19:35:48,442 [INFO] [DRY-RUN] Se crearia el torneo 'Chess960 Sabatino' el 2026-08-29 15:00 con parametros: {'name': 'Chess960 Sabatino', 'clockTime': 3, 'clockIncrement': 2, 'minutes': 60, 'startDate': 1788030000000, 'variant': 'chess960', 'rated': 'true'}
+2026-08-26 19:35:48,442 [INFO] Resumen Parte B -> creados/simulados: 2, omitidos (horario pasado): 2, fallidos: 0
+2026-08-26 19:35:48,442 [INFO] Proceso finalizado.
