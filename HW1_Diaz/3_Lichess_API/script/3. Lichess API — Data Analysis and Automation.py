@@ -269,6 +269,7 @@ def generar_graficos(df, output_dir, username):
         return
 
     output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # Resultados
     fig, ax = plt.subplots()
