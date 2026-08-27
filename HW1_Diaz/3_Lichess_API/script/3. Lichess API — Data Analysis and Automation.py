@@ -224,8 +224,19 @@ def construir_dataframe(partidas_raw, username):
     return df
 
 
+def categorizar_terminacion(status):
+    """Agrupa el 'status' crudo de Lichess en 3 formas de terminar la partida."""
+    mapa = {
+        "mate": "Jaque mate",
+        "resign": "Rendicion",
+        "outoftime": "Tiempo",
+        "timeout": "Tiempo",
+    }
+    return mapa.get(status, "Otro")
+
+
 def calcular_estadisticas(df):
-    """Devuelve un diccionario de DataFrames: resultados, color, modalidad, rating."""
+    """Devuelve un diccionario de DataFrames: resultados, color, modalidad, rating, terminaciones."""
     if df.empty:
         return {}
 
@@ -255,21 +266,74 @@ def calcular_estadisticas(df):
         "rating_promedio": round(rating_valido.mean(), 1) if not rating_valido.empty else None,
     }])
 
+    # Victorias y derrotas por tipo de terminacion (jaque mate / rendicion / tiempo),
+    # como porcentaje del total de partidas.
+    df_decisivas = df[df["resultado"].isin(["win", "loss"])].copy()
+    df_decisivas["tipo_terminacion"] = df_decisivas["estado_final"].apply(categorizar_terminacion)
+
+    terminaciones = df_decisivas.groupby(["tipo_terminacion", "resultado"]).size().unstack(fill_value=0)
+    for columna in ("win", "loss"):
+        if columna not in terminaciones.columns:
+            terminaciones[columna] = 0
+    terminaciones = terminaciones.rename(columns={"win": "victorias", "loss": "derrotas"})
+    terminaciones["pct_victorias"] = (terminaciones["victorias"] / len(df) * 100).round(1)
+    terminaciones["pct_derrotas"] = (terminaciones["derrotas"] / len(df) * 100).round(1)
+    terminaciones = terminaciones.reset_index()
+
     return {
         "resultados": resultados,
         "por_color": por_color,
         "por_modalidad": por_modalidad,
         "resumen_rating": resumen_rating,
+        "terminaciones": terminaciones,
     }
 
 
-def generar_graficos(df, output_dir, username):
+def graficar_terminaciones(estadisticas, output_dir, username):
+    """Grafico de barras divergente: victorias (a la derecha) vs derrotas (a la
+    izquierda) del cero, agrupadas por como termino la partida."""
+    tabla = estadisticas.get("terminaciones")
+    if tabla is None or tabla.empty:
+        return
+
+    output_dir = Path(output_dir)
+    tabla = tabla.sort_values("pct_victorias")
+    y_pos = range(len(tabla))
+
+    fig, ax = plt.subplots(figsize=(7.5, 4))
+    ax.barh(y_pos, tabla["pct_victorias"], color="#4caf50", label="Victorias")
+    ax.barh(y_pos, -tabla["pct_derrotas"], color="#f44336", label="Derrotas")
+    ax.axvline(0, color="black", linewidth=0.8)
+
+    ax.set_yticks(list(y_pos))
+    ax.set_yticklabels(tabla["tipo_terminacion"])
+    ax.set_xlabel("% del total de partidas")
+    ax.set_title(f"Victorias y derrotas por tipo de terminacion — {username}")
+    ax.legend(loc="lower right")
+
+    limite = max(tabla["pct_victorias"].max(), tabla["pct_derrotas"].max(), 1) + 5
+    ax.set_xlim(-limite, limite)
+
+    for i, (pct_v, pct_d) in enumerate(zip(tabla["pct_victorias"], tabla["pct_derrotas"])):
+        if pct_v > 0:
+            ax.text(pct_v + 0.6, i, f"{pct_v}%", va="center", color="#2e7d32", fontsize=9)
+        if pct_d > 0:
+            ax.text(-pct_d - 0.6, i, f"{pct_d}%", va="center", ha="right", color="#c62828", fontsize=9)
+
+    fig.tight_layout()
+    fig.savefig(output_dir / "grafico_terminaciones.png")
+    plt.close(fig)
+
+
+def generar_graficos(df, estadisticas, output_dir, username):
     if df.empty:
         logging.warning("No hay partidas para graficar.")
         return
 
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    graficar_terminaciones(estadisticas, output_dir, username)
 
     # Resultados
     fig, ax = plt.subplots()
@@ -340,13 +404,14 @@ def ejecutar_parte_a(username, max_games, output_dir, token=None):
         return
 
     estadisticas = calcular_estadisticas(df)
-    generar_graficos(df, output_dir, username)
+    generar_graficos(df, estadisticas, output_dir, username)
     exportar_parte_a(df, estadisticas, output_dir, username)
 
     logging.info("Resultados: %s", estadisticas["resultados"].to_dict("records"))
     logging.info("Por color: %s", estadisticas["por_color"].to_dict("records"))
     logging.info("Por modalidad: %s", estadisticas["por_modalidad"].to_dict("records"))
     logging.info("Resumen de rating: %s", estadisticas["resumen_rating"].to_dict("records"))
+    logging.info("Por tipo de terminacion: %s", estadisticas["terminaciones"].to_dict("records"))
     logging.info("CSVs y graficos guardados en: %s", output_dir)
 
 

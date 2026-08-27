@@ -6,3 +6,8 @@
 # Artefactos temporales de Python
 __pycache__/
 *.pyc
+
+# Carpetas de salida generadas al correr los scripts directamente desde script/
+# (la salida "oficial" para la entrega vive en las carpetas output/ de cada proyecto)
+lichess_output/
+lichess_output_v2/
