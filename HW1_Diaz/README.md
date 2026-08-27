@@ -7,6 +7,9 @@ Este repositorio contiene los tres proyectos de la tarea (HW1):
 1. **RPA con Selenium** — Registro automático de personal en PeopleSync.
 2. **Web Scraping** — Tipo de cambio oficial de SUNAT.
 3. **Lichess API** — Análisis de partidas y automatización de torneos.
+## Video de presentación
+
+Enlace al video (máx. 9 minutos):https://drive.google.com/file/d/1a5v4uMvwJgFoeEg4vd96rQeJYY22dna9/view?usp=sharing
 
 ## Estructura del repositorio
 
@@ -170,6 +173,4 @@ Ambos scripts están configurados como tareas programadas de Windows:
 
 > Para el video: se recomienda grabar la pantalla del Programador de tareas haciendo click en "Ejecutar" y mostrar cómo Chrome se abre solo, sin que el presentador escriba ningún comando.
 
-## Video de presentación
 
-Enlace al video (máx. 9 minutos): _pendiente de agregar_.
