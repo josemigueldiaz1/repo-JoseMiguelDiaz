@@ -308,3 +308,111 @@
 2026-08-26 21:15:25,531 [INFO] Fila 17 (DNI 56687044 - Mamani Pérez, José): registrado y verificado correctamente.
 2026-08-26 21:15:25,905 [WARNING] Fila 18 (DNI 76931706 - Martínez Vásquez, Roberto): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
 
+2026-08-26 21:15:26,248 [WARNING] Fila 19 (DNI 43934955 - Rojas Salazar, Verónica): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:15:26,579 [WARNING] Fila 20 (DNI 54609659 - Vargas Medina, Eduardo): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:15:26,945 [WARNING] Fila 21 (DNI 43817123 - Espinoza Ramírez, Elena): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:15:27,311 [WARNING] Fila 22 (DNI 78850600 - Ponce Chávez, Andrés): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:15:33,359 [INFO] Fila 23 (DNI 70683821 - Díaz Aguilar, Verónica Elena): registrado y verificado correctamente.
+2026-08-26 21:15:39,641 [INFO] Fila 24 (DNI 64798543 - Martínez Chávez, Fiorella Sandra): registrado y verificado correctamente.
+2026-08-26 21:15:45,524 [INFO] Fila 25 (DNI 47746286 - Díaz Mendoza, Sergio Miguel): registrado y verificado correctamente.
+2026-08-26 21:15:51,736 [INFO] Fila 26 (DNI 46194045 - Mendoza López, Gabriela): registrado y verificado correctamente.
+2026-08-26 21:15:52,098 [WARNING] Fila 27 (DNI 68701583 - Vásquez Núñez, Alberto): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:15:52,855 [WARNING] Fila 28 (DNI 68842498 - Núñez Torres, Pilar): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:00,694 [INFO] Fila 29 (DNI 50371898 - Núñez Cárdenas, Rosa): registrado y verificado correctamente.
+2026-08-26 21:16:01,571 [WARNING] Fila 30 (DNI 47254174 - Herrera Ramírez, Roberto): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:09,794 [INFO] Fila 31 (DNI 58696734 - Salazar Mamani, Silvia Karen): registrado y verificado correctamente.
+2026-08-26 21:16:10,523 [WARNING] Fila 32 (DNI 51983483 - Gómez Mendoza, José): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:11,704 [WARNING] Fila 33 (DNI 65850027 - Cabrera Gómez, Teresa): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:19,314 [INFO] Fila 34 (DNI 61066522 - Mamani Palacios, Sandra): registrado y verificado correctamente.
+2026-08-26 21:16:20,350 [WARNING] Fila 35 (DNI 68215675 - Díaz Vargas, Milagros): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:21,384 [WARNING] Fila 36 (DNI 78922119 - Rojas Delgado, Pablo): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:22,686 [WARNING] Fila 37 (DNI 74591398 - Sánchez Medina, Alberto): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:30,464 [INFO] Fila 38 (DNI 44887419 - Chávez Bravo, Karen Ana): registrado y verificado correctamente.
+2026-08-26 21:16:38,678 [INFO] Fila 39 (DNI 68531078 - García Pérez, Patricia): registrado y verificado correctamente.
+2026-08-26 21:16:39,570 [WARNING] Fila 40 (DNI 77508841 - Ríos Espinoza, Diego): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:40,553 [WARNING] Fila 41 (DNI 58610049 - Mendoza Chávez, Gabriela): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:48,191 [INFO] Fila 42 (DNI 49286126 - Carrasco Sánchez, Gabriela): registrado y verificado correctamente.
+2026-08-26 21:16:49,064 [WARNING] Fila 43 (DNI 67902136 - Carrasco Ríos, Ana): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:50,070 [WARNING] Fila 44 (DNI 66171560 - Huamán Aguilar, Carlos): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:51,074 [WARNING] Fila 45 (DNI 66095765 - Guerrero Rodríguez, Silvia): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:16:58,764 [INFO] Fila 46 (DNI 68763716 - Rodríguez Sánchez, Manuel): registrado y verificado correctamente.
+2026-08-26 21:16:59,581 [WARNING] Fila 47 (DNI 58673485 - Mamani Paredes, María): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:07,234 [INFO] Fila 48 (DNI 56594901 - Fernández Rodríguez, Raúl Luis): registrado y verificado correctamente.
+2026-08-26 21:17:15,473 [INFO] Fila 49 (DNI 64756136 - Ríos Mendoza, Pablo): registrado y verificado correctamente.
+2026-08-26 21:17:27,297 [INFO] ========== RESUMEN FINAL ==========
+2026-08-26 21:17:27,298 [INFO] Total de registros procesados: 50
+2026-08-26 21:17:27,298 [INFO] Registros cargados exitosamente: 24
+2026-08-26 21:17:27,299 [INFO] Registros no cargados: 26
+2026-08-26 21:17:27,299 [INFO] Detalle de registros no cargados:
+2026-08-26 21:17:27,300 [INFO]   - DNI 48376941 - Ríos Carrasco, Luis -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,300 [INFO]   - DNI 51484920 - Herrera Martínez, Alejandro -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,302 [INFO]   - DNI 73119287 - Díaz Cabrera, Gustavo -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,304 [INFO]   - DNI 57675739 - Ríos García, Alberto -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,307 [INFO]   - DNI 54213536 - Reyes Delgado, Cecilia -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,308 [INFO]   - DNI 44296705 - Chávez Castillo, Andrés -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,310 [INFO]   - DNI 52778193 - Bravo Cárdenas, Roberto -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,311 [INFO]   - DNI 76931706 - Martínez Vásquez, Roberto -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,312 [INFO]   - DNI 43934955 - Rojas Salazar, Verónica -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,313 [INFO]   - DNI 54609659 - Vargas Medina, Eduardo -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,314 [INFO]   - DNI 43817123 - Espinoza Ramírez, Elena -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,315 [INFO]   - DNI 78850600 - Ponce Chávez, Andrés -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,315 [INFO]   - DNI 68701583 - Vásquez Núñez, Alberto -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,316 [INFO]   - DNI 68842498 - Núñez Torres, Pilar -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,317 [INFO]   - DNI 47254174 - Herrera Ramírez, Roberto -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,318 [INFO]   - DNI 51983483 - Gómez Mendoza, José -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,319 [INFO]   - DNI 65850027 - Cabrera Gómez, Teresa -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,320 [INFO]   - DNI 68215675 - Díaz Vargas, Milagros -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,320 [INFO]   - DNI 78922119 - Rojas Delgado, Pablo -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,321 [INFO]   - DNI 74591398 - Sánchez Medina, Alberto -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,322 [INFO]   - DNI 77508841 - Ríos Espinoza, Diego -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,324 [INFO]   - DNI 58610049 - Mendoza Chávez, Gabriela -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,325 [INFO]   - DNI 67902136 - Carrasco Ríos, Ana -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,326 [INFO]   - DNI 66171560 - Huamán Aguilar, Carlos -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,328 [INFO]   - DNI 66095765 - Guerrero Rodríguez, Silvia -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,329 [INFO]   - DNI 58673485 - Mamani Paredes, María -> Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:17:27,330 [INFO] Reporte completo guardado en: C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW1_Diaz\1_RPA_PeopleSync\output\registros_omitidos.csv
+2026-08-26 21:17:27,333 [INFO] ====================================
