@@ -278,3 +278,33 @@
 
 2026-08-26 19:05:50,418 [INFO] Reporte completo guardado en: c:\Users\josem\OneDrive\Documentos\GitHub\personal\HW1_Diaz\1_RPA_PeopleSync\output\registros_omitidos.csv
 2026-08-26 19:05:50,418 [INFO] ====================================
+2026-08-26 21:14:15,701 [INFO] Iniciando RPA de registro de personal
+2026-08-26 21:14:15,701 [INFO] Excel: C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW1_Diaz\1_RPA_PeopleSync\input\Ingreso_Personal_Agosto.xlsx
+2026-08-26 21:14:15,702 [INFO] URL: https://the-paul2002.github.io/Proyecto-IA-/Homework1/
+2026-08-26 21:14:23,081 [INFO] Fila 0 (DNI 49364231 - Chávez Castillo, Carlos): registrado y verificado correctamente.
+2026-08-26 21:14:29,526 [INFO] Fila 1 (DNI 53343768 - Rodríguez Núñez, Ricardo Julio): registrado y verificado correctamente.
+2026-08-26 21:14:35,768 [INFO] Fila 2 (DNI 50434052 - Mamani Herrera, Fernando): registrado y verificado correctamente.
+2026-08-26 21:14:36,190 [WARNING] Fila 3 (DNI 48376941 - Ríos Carrasco, Luis): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:14:42,018 [INFO] Fila 4 (DNI 55622331 - Medina Sánchez, José): registrado y verificado correctamente.
+2026-08-26 21:14:42,381 [WARNING] Fila 5 (DNI 51484920 - Herrera Martínez, Alejandro): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:14:48,171 [INFO] Fila 6 (DNI 42154210 - López Castillo, Verónica): registrado y verificado correctamente.
+2026-08-26 21:14:54,546 [INFO] Fila 7 (DNI 57775807 - Ríos Torres, Milagros): registrado y verificado correctamente.
+2026-08-26 21:14:54,835 [WARNING] Fila 8 (DNI 73119287 - Díaz Cabrera, Gustavo): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:15:00,058 [INFO] Fila 9 (DNI 56872115 - Ríos Espinoza, Manuel): registrado y verificado correctamente.
+2026-08-26 21:15:00,378 [WARNING] Fila 10 (DNI 57675739 - Ríos García, Alberto): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:15:06,310 [INFO] Fila 11 (DNI 75591432 - Ramírez Carrasco, Patricia): registrado y verificado correctamente.
+2026-08-26 21:15:12,172 [INFO] Fila 12 (DNI 72614267 - Sánchez Sánchez, Ana Teresa): registrado y verificado correctamente.
+2026-08-26 21:15:12,523 [WARNING] Fila 13 (DNI 54213536 - Reyes Delgado, Cecilia): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: No binario; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:15:12,901 [WARNING] Fila 14 (DNI 44296705 - Chávez Castillo, Andrés): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:15:19,042 [INFO] Fila 15 (DNI 74504433 - Mamani Martínez, Andrés José): registrado y verificado correctamente.
+2026-08-26 21:15:19,467 [WARNING] Fila 16 (DNI 52778193 - Bravo Cárdenas, Roberto): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+
+2026-08-26 21:15:25,531 [INFO] Fila 17 (DNI 56687044 - Mamani Pérez, José): registrado y verificado correctamente.
+2026-08-26 21:15:25,905 [WARNING] Fila 18 (DNI 76931706 - Martínez Vásquez, Roberto): Opcion no encontrada en un dropdown: Message: Could not locate element with visible text: Prefiero no indicar; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+

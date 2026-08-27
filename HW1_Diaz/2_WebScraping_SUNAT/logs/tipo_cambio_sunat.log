@@ -72,3 +72,40 @@
 2026-08-26 18:05:39,523 [INFO] Meses con error durante la consulta: 0
 2026-08-26 18:05:39,523 [INFO] Archivo consolidado guardado en: c:\Users\josem\OneDrive\Documentos\GitHub\personal\HW1_Diaz\2_WebScraping_SUNAT\output\tipo_cambio_sunat.csv
 2026-08-26 18:05:39,523 [INFO] ====================================
+2026-08-26 20:46:03,923 [INFO] Iniciando scraping de tipo de cambio SUNAT
+2026-08-26 20:46:03,923 [INFO] Periodos a consultar: (2024, 6) a (2026, 8) (27 meses)
+2026-08-26 20:46:10,565 [INFO] Periodo 2024-06: 30 dias con tipo de cambio publicado.
+2026-08-26 20:46:18,534 [INFO] Periodo 2024-07: 27 dias con tipo de cambio publicado.
+2026-08-26 20:46:26,679 [INFO] Periodo 2024-08: 31 dias con tipo de cambio publicado.
+2026-08-26 20:46:35,025 [INFO] Periodo 2024-09: 30 dias con tipo de cambio publicado.
+2026-08-26 20:46:41,751 [INFO] Periodo 2024-10: 31 dias con tipo de cambio publicado.
+2026-08-26 20:46:49,384 [INFO] Periodo 2024-11: 30 dias con tipo de cambio publicado.
+2026-08-26 20:46:56,799 [INFO] Periodo 2024-12: 31 dias con tipo de cambio publicado.
+2026-08-26 20:47:03,044 [INFO] Periodo 2025-01: 31 dias con tipo de cambio publicado.
+2026-08-26 20:47:09,274 [INFO] Periodo 2025-02: 28 dias con tipo de cambio publicado.
+2026-08-26 20:47:15,538 [INFO] Periodo 2025-03: 31 dias con tipo de cambio publicado.
+2026-08-26 20:47:21,492 [INFO] Periodo 2025-04: 30 dias con tipo de cambio publicado.
+2026-08-26 20:47:27,826 [INFO] Periodo 2025-05: 31 dias con tipo de cambio publicado.
+2026-08-26 20:47:33,959 [INFO] Periodo 2025-06: 30 dias con tipo de cambio publicado.
+2026-08-26 20:47:39,803 [INFO] Periodo 2025-07: 31 dias con tipo de cambio publicado.
+2026-08-26 20:47:48,623 [INFO] Periodo 2025-08: 31 dias con tipo de cambio publicado.
+2026-08-26 20:47:54,724 [INFO] Periodo 2025-09: 30 dias con tipo de cambio publicado.
+2026-08-26 20:48:01,371 [INFO] Periodo 2025-10: 31 dias con tipo de cambio publicado.
+2026-08-26 20:48:07,141 [INFO] Periodo 2025-11: 30 dias con tipo de cambio publicado.
+2026-08-26 20:48:13,722 [INFO] Periodo 2025-12: 30 dias con tipo de cambio publicado.
+2026-08-26 20:48:19,613 [INFO] Periodo 2026-01: 31 dias con tipo de cambio publicado.
+2026-08-26 20:48:27,679 [INFO] Periodo 2026-02: 28 dias con tipo de cambio publicado.
+2026-08-26 20:48:36,330 [INFO] Periodo 2026-03: 31 dias con tipo de cambio publicado.
+2026-08-26 20:48:44,299 [INFO] Periodo 2026-04: 30 dias con tipo de cambio publicado.
+2026-08-26 20:48:50,948 [INFO] Periodo 2026-05: 31 dias con tipo de cambio publicado.
+2026-08-26 20:48:57,128 [INFO] Periodo 2026-06: 30 dias con tipo de cambio publicado.
+2026-08-26 20:49:03,093 [INFO] Periodo 2026-07: 31 dias con tipo de cambio publicado.
+2026-08-26 20:49:09,531 [INFO] Periodo 2026-08: 27 dias con tipo de cambio publicado.
+2026-08-26 20:49:14,760 [INFO] ========== RESUMEN FINAL ==========
+2026-08-26 20:49:14,760 [INFO] Total de dias procesados: 817
+2026-08-26 20:49:14,760 [INFO] Dias con tipo de cambio publicado por SUNAT: 812
+2026-08-26 20:49:14,761 [INFO] Dias sin publicacion (arrastrados del dia habil anterior): 5
+2026-08-26 20:49:14,761 [INFO] Dias sin ningun dato disponible: 0
+2026-08-26 20:49:14,761 [INFO] Meses con error durante la consulta: 0
+2026-08-26 20:49:14,761 [INFO] Archivo consolidado guardado en: c:\Users\josem\OneDrive\Documentos\GitHub\personal\HW1_Diaz\2_WebScraping_SUNAT\output\tipo_cambio_sunat.csv
+2026-08-26 20:49:14,761 [INFO] ====================================

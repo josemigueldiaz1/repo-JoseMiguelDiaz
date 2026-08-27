@@ -23,6 +23,10 @@ except NameError:
     # se usa el directorio actual como respaldo solo para pruebas interactivas.
     SCRIPT_DIR = Path.cwd()
 
+# El proyecto separa el script de sus carpetas de datos: input/, logs/ y output/
+# viven junto a script/, no dentro de ella.
+PROJECT_DIR = SCRIPT_DIR.parent
+
 
 class RegistroInvalidoError(Exception):
     """El formulario respondio con un toast de error (rechazo por validacion)."""
@@ -31,8 +35,8 @@ class RegistroInvalidoError(Exception):
 def parse_args():
     parser = argparse.ArgumentParser(description="RPA de registro de personal en PeopleSync")
     parser.add_argument(
-        "--excel", default=str(SCRIPT_DIR / "Ingreso_Personal_Agosto.xlsx"),
-        help="Ruta al archivo Excel con los datos a registrar (default: junto al script)"
+        "--excel", default=str(PROJECT_DIR / "input" / "Ingreso_Personal_Agosto.xlsx"),
+        help="Ruta al archivo Excel con los datos a registrar (default: carpeta input/ del proyecto)"
     )
     parser.add_argument(
         "--url", default="https://the-paul2002.github.io/Proyecto-IA-/Homework1/",
@@ -47,12 +51,12 @@ def parse_args():
         help="Ejecuta Chrome sin interfaz grafica (necesario para Task Scheduler sin sesion interactiva)"
     )
     parser.add_argument(
-        "--log-file", default=str(SCRIPT_DIR / "rpa_registro_personal.log"),
-        help="Ruta del archivo de log (default: junto al script)"
+        "--log-file", default=str(PROJECT_DIR / "logs" / "rpa_registro_personal.log"),
+        help="Ruta del archivo de log (default: carpeta logs/ del proyecto)"
     )
     parser.add_argument(
-        "--report-omitidos", default=str(SCRIPT_DIR / "registros_omitidos.csv"),
-        help="Ruta del CSV donde se guardan las filas que no se pudieron registrar"
+        "--report-omitidos", default=str(PROJECT_DIR / "output" / "registros_omitidos.csv"),
+        help="Ruta del CSV donde se guardan las filas que no se pudieron registrar (default: carpeta output/ del proyecto)"
     )
     return parser.parse_args()
 
