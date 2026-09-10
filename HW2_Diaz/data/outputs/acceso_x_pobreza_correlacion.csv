@@ -1,0 +1,5 @@
+ambito,n_distritos,pearson_r,pearson_p,spearman_rho,spearman_p,pobreza_media_pct,naturaleza
+AYACUCHO,104,0.229,0.0193,0.252,0.0098,44.6,"correlacional, no causal (confusor comun: lejania)"
+LAMBAYEQUE,38,0.798,0.0,0.563,0.0002,21.2,"correlacional, no causal (confusor comun: lejania)"
+LORETO,36,0.186,0.2783,0.223,0.1908,42.6,"correlacional, no causal (confusor comun: lejania)"
+TOTAL,178,0.136,0.0706,0.47,0.0,39.2,"correlacional, no causal (confusor comun: lejania)"

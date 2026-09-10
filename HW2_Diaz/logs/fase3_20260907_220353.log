@@ -1,0 +1,102 @@
+2026-09-07 22:03:53 [INFO   ] hw2: Log de esta corrida: C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\logs\fase3_20260907_220353.log
+2026-09-07 22:03:53 [INFO   ] hw2: 
+2026-09-07 22:03:53 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:53 [INFO   ] hw2: HW2 — FASE 3 · Construccion de metricas
+2026-09-07 22:03:53 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:53 [INFO   ] hw2:   puntos de demanda: 5000 · poblacion representada: 2732389
+2026-09-07 22:03:53 [INFO   ] hw2:   con tiempo interpretable: 3394 (67.9%)
+2026-09-07 22:03:53 [INFO   ] hw2: 
+2026-09-07 22:03:53 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:53 [INFO   ] hw2: FASE 3.1 — Bandas de cobertura
+2026-09-07 22:03:53 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:53 [INFO   ] src.metrics:   bandas de cobertura por departamento:
+2026-09-07 22:03:53 [INFO   ] src.metrics:     AYACUCHO     <=30min  58.0% · <=60min  73.1% · <=120min  88.6% · sin acceso vial   4.3%
+2026-09-07 22:03:53 [INFO   ] src.metrics:     LAMBAYEQUE   <=30min  82.2% · <=60min  92.1% · <=120min  96.7% · sin acceso vial   0.8%
+2026-09-07 22:03:53 [INFO   ] src.metrics:     LORETO       <=30min  34.6% · <=60min  39.8% · <=120min  42.1% · sin acceso vial  37.7%
+2026-09-07 22:03:53 [INFO   ] src.metrics:   bandas de cobertura por total:
+2026-09-07 22:03:53 [INFO   ] src.metrics:     TOTAL        <=30min  62.3% · <=60min  72.2% · <=120min  79.0% · sin acceso vial  12.2%
+2026-09-07 22:03:53 [INFO   ] src.io_utils:   guardado  bandas_cobertura.csv              4 filas
+2026-09-07 22:03:53 [INFO   ] src.metrics:   tabla LaTeX  bandas_cobertura.tex               4 filas
+2026-09-07 22:03:53 [INFO   ] hw2: 
+2026-09-07 22:03:53 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:53 [INFO   ] hw2: FASE 3.2 — Agregacion ponderada por poblacion
+2026-09-07 22:03:53 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] src.metrics:   agregado a nivel distrito     215 unidades
+2026-09-07 22:03:54 [INFO   ] src.io_utils:   guardado  acceso_por_distrito.csv         215 filas
+2026-09-07 22:03:54 [INFO   ] src.metrics:   agregado a nivel provincia    22 unidades
+2026-09-07 22:03:54 [INFO   ] src.io_utils:   guardado  acceso_por_provincia.csv         22 filas
+2026-09-07 22:03:54 [INFO   ] src.metrics:   agregado a nivel departamento 3 unidades
+2026-09-07 22:03:54 [INFO   ] src.io_utils:   guardado  acceso_por_departamento.csv       3 filas
+2026-09-07 22:03:54 [INFO   ] src.metrics:   tabla LaTeX  acceso_departamento.tex            3 filas
+2026-09-07 22:03:54 [INFO   ] hw2: 
+2026-09-07 22:03:54 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] hw2: FASE 3.3 — Brechas criticas
+2026-09-07 22:03:54 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] src.metrics:   brechas criticas: top 20 distritos
+2026-09-07 22:03:54 [INFO   ] src.metrics:      1. OCAÑA                        AYACUCHO    pob=   2738 · sin acceso 100.0% · t medio nan min
+2026-09-07 22:03:54 [INFO   ] src.metrics:      2. HUACAÑA                      AYACUCHO    pob=    715 · sin acceso 100.0% · t medio nan min
+2026-09-07 22:03:54 [INFO   ] src.metrics:      3. ANDOAS                       LORETO      pob=   8681 · sin acceso 100.0% · t medio nan min
+2026-09-07 22:03:54 [INFO   ] src.metrics:      4. BARRANCA                     LORETO      pob=  16273 · sin acceso 100.0% · t medio nan min
+2026-09-07 22:03:54 [INFO   ] src.metrics:      5. CAHUAPANAS                   LORETO      pob=   7859 · sin acceso 100.0% · t medio nan min
+2026-09-07 22:03:54 [INFO   ] src.io_utils:   guardado  brechas_criticas.csv             20 filas
+2026-09-07 22:03:54 [INFO   ] src.metrics:   tabla LaTeX  brechas_criticas.tex               20 filas
+2026-09-07 22:03:54 [INFO   ] hw2: 
+2026-09-07 22:03:54 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] hw2: FASE 3.4 — Desigualdad del acceso
+2026-09-07 22:03:54 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] src.metrics:   desigualdad del tiempo de acceso (Gini ponderado):
+2026-09-07 22:03:54 [INFO   ] src.metrics:     AYACUCHO     Gini=0.6390  (media ponderada 38.8 min)
+2026-09-07 22:03:54 [INFO   ] src.metrics:     LAMBAYEQUE   Gini=0.6327  (media ponderada 19.3 min)
+2026-09-07 22:03:54 [INFO   ] src.metrics:     LORETO       Gini=0.8640  (media ponderada 331.9 min)
+2026-09-07 22:03:54 [INFO   ] src.metrics:     TOTAL        Gini=0.8643  (media ponderada 88.1 min)
+2026-09-07 22:03:54 [INFO   ] src.io_utils:   guardado  desigualdad_gini.csv              4 filas
+2026-09-07 22:03:54 [INFO   ] src.io_utils:   guardado  curva_lorenz.csv                404 filas
+2026-09-07 22:03:54 [INFO   ] src.metrics:   tabla LaTeX  desigualdad.tex                    4 filas
+2026-09-07 22:03:54 [INFO   ] hw2: 
+2026-09-07 22:03:54 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] hw2: FASE 3.5 — Contraste urbano / rural
+2026-09-07 22:03:54 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] src.metrics:   contraste urbano / rural:
+2026-09-07 22:03:54 [INFO   ] src.metrics:     AYACUCHO     rural   pob=  246081 · t medio   55.7 min · sin acceso vial   9.3%
+2026-09-07 22:03:54 [INFO   ] src.metrics:     AYACUCHO     urbano  pob=  469158 · t medio   30.7 min · sin acceso vial   1.6%
+2026-09-07 22:03:54 [INFO   ] src.metrics:     LAMBAYEQUE   rural   pob=  299620 · t medio   43.0 min · sin acceso vial   1.5%
+2026-09-07 22:03:54 [INFO   ] src.metrics:     LAMBAYEQUE   urbano  pob=  939141 · t medio   11.8 min · sin acceso vial   0.6%
+2026-09-07 22:03:54 [INFO   ] src.metrics:     LORETO       rural   pob=  200617 · t medio 1394.6 min · sin acceso vial  72.6%
+2026-09-07 22:03:54 [INFO   ] src.metrics:     LORETO       urbano  pob=  577771 · t medio  196.1 min · sin acceso vial  25.6%
+2026-09-07 22:03:54 [INFO   ] src.io_utils:   guardado  contraste_urbano_rural.csv        6 filas
+2026-09-07 22:03:54 [INFO   ] src.metrics:   tabla LaTeX  urbano_rural.tex                   6 filas
+2026-09-07 22:03:54 [INFO   ] hw2: 
+2026-09-07 22:03:54 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] hw2: FASE 3.6 — Cruce con la tasa de pobreza distrital
+2026-09-07 22:03:54 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] src.metrics:   tabla de pobreza: 1873 distritos con dato
+2026-09-07 22:03:54 [WARNING] src.metrics:   quedan fuera del cruce 37 de 215 distritos:
+2026-09-07 22:03:54 [WARNING] src.metrics:      4 sin dato de pobreza (distritos de creacion reciente)
+2026-09-07 22:03:54 [WARNING] src.metrics:     32 sin tiempo de acceso: NINGUN punto del distrito tiene un tiempo interpretable, o sea que la red vial no sirve al distrito entero. Esto no es un hueco de datos, es un hallazgo.
+2026-09-07 22:03:54 [WARNING] src.metrics:      1 por ambos motivos
+2026-09-07 22:03:54 [WARNING] src.metrics:     distritos enteros sin acceso vial, por departamento: {'AYACUCHO': 16, 'LORETO': 17}
+2026-09-07 22:03:54 [INFO   ] src.metrics:   cruce acceso x pobreza (correlacion, NO causalidad):
+2026-09-07 22:03:54 [INFO   ] src.metrics:     AYACUCHO     n=104 · Pearson r=+0.229 (p=0.0193) · Spearman rho=+0.252 (p=0.0098)
+2026-09-07 22:03:54 [INFO   ] src.metrics:     LAMBAYEQUE   n= 38 · Pearson r=+0.798 (p=0.0000) · Spearman rho=+0.563 (p=0.0002)
+2026-09-07 22:03:54 [INFO   ] src.metrics:     LORETO       n= 36 · Pearson r=+0.186 (p=0.2783) · Spearman rho=+0.223 (p=0.1908)
+2026-09-07 22:03:54 [INFO   ] src.metrics:     TOTAL        n=178 · Pearson r=+0.136 (p=0.0706) · Spearman rho=+0.470 (p=0.0000)
+2026-09-07 22:03:54 [INFO   ] src.metrics:   distritos por cuadrante: {'doble carga: lejos y pobre': 62, 'cerca y menos pobre': 62, 'sin dato': 37, 'lejos pero menos pobre': 27, 'cerca pero pobre': 27}
+2026-09-07 22:03:54 [INFO   ] src.metrics:   DOBLE CARGA: 62 distritos, 420053 habitantes (15.4% del ambito)
+2026-09-07 22:03:54 [INFO   ] src.io_utils:   guardado  acceso_x_pobreza.csv            215 filas
+2026-09-07 22:03:54 [INFO   ] src.io_utils:   guardado  acceso_x_pobreza_correlacion.csv      4 filas
+2026-09-07 22:03:54 [INFO   ] src.metrics:   tabla LaTeX  acceso_pobreza.tex                 4 filas
+2026-09-07 22:03:54 [INFO   ] hw2: 
+2026-09-07 22:03:54 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] hw2: FASE 3.7 — Figuras
+2026-09-07 22:03:54 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:54 [INFO   ] src.export:   figura    fase3_bandas.png
+2026-09-07 22:03:54 [INFO   ] src.export:   figura    fase3_lorenz.png
+2026-09-07 22:03:55 [INFO   ] src.export:   figura    fase3_pobreza.png
+2026-09-07 22:03:55 [INFO   ] hw2: 
+2026-09-07 22:03:55 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:55 [INFO   ] hw2: FASE 3 COMPLETA en 0.0 min
+2026-09-07 22:03:55 [INFO   ] hw2: ======================================================================
+2026-09-07 22:03:55 [INFO   ] hw2: Poblacion a <=60 min de un resolutivo : 72.2%
+2026-09-07 22:03:55 [INFO   ] hw2: Poblacion sin acceso vial            : 12.2%
+2026-09-07 22:03:55 [INFO   ] hw2: Gini del tiempo de acceso (ambito)   : 0.8643
+2026-09-07 22:03:55 [INFO   ] hw2: Tablas LaTeX en                      : C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\report\tablas

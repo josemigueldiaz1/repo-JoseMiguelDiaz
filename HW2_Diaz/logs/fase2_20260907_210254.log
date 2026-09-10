@@ -1,0 +1,254 @@
+2026-09-07 21:02:54 [INFO   ] hw2: Log de esta corrida: C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\logs\fase2_20260907_210254.log
+2026-09-07 21:02:54 [WARNING] hw2: La Fase 1 se regenera: faltan 3 de sus salidas (oferta_salud.parquet, demanda_ccpp.parquet, distritos.parquet)
+2026-09-07 21:02:54 [INFO   ] hw2: 
+2026-09-07 21:02:54 [INFO   ] hw2: ======================================================================
+2026-09-07 21:02:54 [INFO   ] hw2: HW2 — FASE 1 · Adquisicion y validacion de datos
+2026-09-07 21:02:54 [INFO   ] hw2: ======================================================================
+2026-09-07 21:02:54 [INFO   ] hw2: Departamentos : LAMBAYEQUE (Costa), AYACUCHO (Sierra), LORETO (Selva)
+2026-09-07 21:02:54 [INFO   ] hw2: Resolutivas   : II-1, II-2, II-E, III-1, III-2, III-E
+2026-09-07 21:02:54 [INFO   ] hw2: Estados activos: ACTIVO
+2026-09-07 21:02:54 [INFO   ] hw2: Formato salida: parquet
+2026-09-07 21:02:54 [INFO   ] src.acquisition: ----------------------------------------------------------------------
+2026-09-07 21:02:54 [INFO   ] src.acquisition: FASE 1.1 — Adquisicion de datos
+2026-09-07 21:02:54 [INFO   ] src.acquisition: ----------------------------------------------------------------------
+2026-09-07 21:02:57 [INFO   ] src.acquisition:   [cache] renipress              ya existe (19.8 MB), no se re-descarga
+2026-09-07 21:02:57 [INFO   ] src.acquisition:   [cache] renipress_anterior     ya existe (19.1 MB), no se re-descarga
+2026-09-07 21:02:58 [INFO   ] src.acquisition:   [cache] centros_poblados       ya existe (6.0 MB), no se re-descarga
+2026-09-07 21:02:59 [INFO   ] src.acquisition:   [cache] distritos              ya existe (18.8 MB), no se re-descarga
+2026-09-07 21:03:00 [INFO   ] src.acquisition:   [cache] poblacion_raster       ya existe (6.4 MB), no se re-descarga
+2026-09-07 21:03:00 [INFO   ] src.acquisition:   [skip]  poblacion_raster_alta_res omitido (usa --hi-res-pop para bajar los 596 MB del raster unconstrained)
+2026-09-07 21:03:00 [INFO   ] src.acquisition:   [skip]  osm                    omitido (usa --with-osm para bajar los 244 MB del extracto OSM)
+2026-09-07 21:03:00 [INFO   ] src.acquisition:   [cache] CCPP_0.zip ya descomprimido
+2026-09-07 21:03:00 [INFO   ] src.acquisition:   [cache] DISTRITOS_LIMITES.zip ya descomprimido
+2026-09-07 21:03:00 [INFO   ] src.acquisition: Adquisicion completa: 5 archivo(s) disponibles en C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\data\raw
+2026-09-07 21:03:00 [INFO   ] hw2: 
+2026-09-07 21:03:00 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:00 [INFO   ] hw2: FASE 1.2 — Limites distritales
+2026-09-07 21:03:00 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:00 [INFO   ] hw2:   1891 distritos a nivel nacional
+2026-09-07 21:03:00 [INFO   ] hw2:   215 distritos en el ambito
+2026-09-07 21:03:00 [INFO   ] hw2:   por departamento: {'AYACUCHO': 124, 'LAMBAYEQUE': 38, 'LORETO': 53}
+2026-09-07 21:03:00 [INFO   ] src.supply: ----------------------------------------------------------------------
+2026-09-07 21:03:00 [INFO   ] src.supply: FASE 1.2 — Oferta: establecimientos de salud (RENIPRESS)
+2026-09-07 21:03:00 [INFO   ] src.supply: ----------------------------------------------------------------------
+2026-09-07 21:03:00 [INFO   ] src.supply:   RENIPRESS_31-08-2026.csv: 36004 registros x 31 columnas (encoding=utf-8-sig, sep=';')
+2026-09-07 21:03:00 [INFO   ] src.validation:   !! R6   Problemas de codificacion en campos de texto   marcados=4      CORREGIDO
+2026-09-07 21:03:00 [INFO   ] src.validation:        -> recuperados 4/4 (100.0%), descartados 0
+2026-09-07 21:03:00 [INFO   ] src.supply:   categoria normalizada: 8552 sin categoria utilizable (23.8%)
+2026-09-07 21:03:00 [INFO   ] src.supply:   distribucion: {'I-1': 11780, 'SIN_CATEGORIA': 8552, 'I-2': 8505, 'I-3': 5897, 'I-4': 498, 'II-E': 347, 'II-1': 273, 'II-2': 90, 'III-1': 35, 'III-2': 17, 'III-E': 10}
+2026-09-07 21:03:00 [INFO   ] src.validation:   OK R5   Codigos duplicados en `COD_IPRESS`             marcados=0      SIN_HALLAZGOS
+2026-09-07 21:03:00 [INFO   ] src.validation:   !! R1   Coordenadas ausentes, nulas o cero             marcados=13176  RETENIDO_CON_ADVERTENCIA
+2026-09-07 21:03:00 [INFO   ] src.validation:   OK R3   Latitud y longitud intercambiadas              marcados=0      SIN_HALLAZGOS
+2026-09-07 21:03:00 [INFO   ] src.validation:   !! R2   Coordenadas fuera del bounding box del Peru    marcados=5      RETENIDO_CON_ADVERTENCIA
+2026-09-07 21:03:00 [INFO   ] src.validation:        coordenadas utilizables: 22823/36004 (63.4%)
+2026-09-07 21:03:01 [INFO   ] src.validation:   !! R4   Punto fuera del distrito que el registro decla marcados=1719   RETENIDO_CON_ADVERTENCIA
+2026-09-07 21:03:01 [INFO   ] src.validation:        -> recuperados 350/1719 (20.4%), descartados 0
+2026-09-07 21:03:01 [INFO   ] src.supply:   nacional: 26901 activos · 677 resolutivos · 615 resolutivos aptos para ruteo
+2026-09-07 21:03:01 [INFO   ] src.supply:   ambito (LAMBAYEQUE, AYACUCHO, LORETO): 2838 establecimientos · 48 resolutivos · 44 resolutivos aptos
+2026-09-07 21:03:01 [INFO   ] src.supply:   categorias por departamento:
+categoria     I-1  I-2  I-3  I-4  II-1  II-2  II-E  III-1  SIN_CATEGORIA
+departamento                                                            
+AYACUCHO      378  134  155   16    10     2     5      0             89
+LAMBAYEQUE    119  219  179    8     5     1    17      2            450
+LORETO        396  253  142   23     7     3     4      2            219
+2026-09-07 21:03:01 [INFO   ] hw2: 
+2026-09-07 21:03:01 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:01 [INFO   ] hw2: FASE 1.4 — Demanda: centros poblados y poblacion
+2026-09-07 21:03:01 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:01 [INFO   ] hw2:   raster de poblacion en uso: per_ppp_2020_UNadj_constrained.tif
+2026-09-07 21:03:01 [INFO   ] src.demand:   leyendo centros poblados: CCPP_IGN100K.shp
+2026-09-07 21:03:02 [INFO   ] src.demand:     136587 centros poblados a nivel nacional
+2026-09-07 21:03:02 [INFO   ] src.demand:     15481 en LAMBAYEQUE, AYACUCHO, LORETO
+2026-09-07 21:03:02 [WARNING] src.demand:     63 centros poblados no cayeron dentro de ningun distrito (borde/costa); se descartan del dataset de demanda
+2026-09-07 21:03:02 [INFO   ] src.demand:     15418 centros poblados con distrito asignado
+2026-09-07 21:03:02 [INFO   ] src.demand:   imputando poblacion desde per_ppp_2020_UNadj_constrained.tif
+2026-09-07 21:03:03 [INFO   ] src.demand:     distritos procesados 50/215
+2026-09-07 21:03:03 [INFO   ] src.demand:     distritos procesados 100/215
+2026-09-07 21:03:03 [INFO   ] src.demand:     distritos procesados 150/215
+2026-09-07 21:03:05 [INFO   ] src.demand:     distritos procesados 200/215
+2026-09-07 21:03:06 [INFO   ] src.demand:     distritos procesados 215/215
+2026-09-07 21:03:06 [WARNING] src.demand:     17 distrito(s) sin celdas pobladas en el raster: 050402, 050406, 050411, 050413, 050704, 050707, 050802, 050808...
+2026-09-07 21:03:06 [INFO   ] src.demand:     poblacion en el raster (ambito): 2732389
+2026-09-07 21:03:06 [INFO   ] src.demand:     poblacion asignada a centros poblados: 2732389 (100.0000% del raster)
+2026-09-07 21:03:06 [INFO   ] src.demand:     centros poblados sin poblacion en el raster: 13146/15418 (85.3%)
+2026-09-07 21:03:06 [INFO   ] src.demand:     poblacion imputada por departamento: {'AYACUCHO': 715240, 'LAMBAYEQUE': 1238761, 'LORETO': 778389}
+2026-09-07 21:03:06 [WARNING] src.demand:     LIMITACION: los distritos sin celdas pobladas y los 13146 centros poblados con cero habitantes reflejan el sesgo conocido del producto 'constrained' en zonas de asentamiento disperso (Amazonia). Se conservan con peso 0 y el informe lo declara.
+2026-09-07 21:03:06 [INFO   ] src.demand:     urbano=441 (72.6% de la poblacion) · rural=14977
+2026-09-07 21:03:06 [INFO   ] src.demand:     poblacion_minima=0: se conservan los 15418 puntos de demanda, incluidos los de peso 0
+2026-09-07 21:03:06 [INFO   ] hw2: 
+2026-09-07 21:03:06 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:06 [INFO   ] hw2: FASE 1.5 — Escritura de resultados
+2026-09-07 21:03:06 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:06 [INFO   ] src.io_utils:   guardado  oferta_salud.parquet           2838 filas  0.2 MB
+2026-09-07 21:03:06 [INFO   ] src.io_utils:   guardado  oferta_salud.gpkg            (copia para QGIS)
+2026-09-07 21:03:06 [INFO   ] src.io_utils:   guardado  demanda_ccpp.parquet          15418 filas  0.9 MB
+2026-09-07 21:03:07 [INFO   ] src.io_utils:   guardado  demanda_ccpp.gpkg            (copia para QGIS)
+2026-09-07 21:03:07 [INFO   ] src.io_utils:   guardado  distritos.parquet               215 filas  3.0 MB
+2026-09-07 21:03:07 [INFO   ] src.io_utils:   guardado  distritos.gpkg               (copia para QGIS)
+2026-09-07 21:03:07 [INFO   ] src.validation:   reporte de calidad -> data_quality_oferta.csv
+2026-09-07 21:03:07 [INFO   ] src.validation:   reporte de calidad -> data_quality_oferta.md
+2026-09-07 21:03:07 [INFO   ] hw2: 
+2026-09-07 21:03:07 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:07 [INFO   ] hw2: FASE 1.6 — Innovacion: rotacion temporal del registro
+2026-09-07 21:03:07 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:07 [INFO   ] src.supply:   comparacion temporal: RENIPRESS_30-04-2026.csv vs RENIPRESS_31-08-2026.csv
+2026-09-07 21:03:07 [INFO   ] src.supply:   RENIPRESS_30-04-2026.csv: 35471 registros x 31 columnas (encoding=utf-8-sig, sep=';')
+2026-09-07 21:03:07 [INFO   ] src.supply:   RENIPRESS_31-08-2026.csv: 36004 registros x 31 columnas (encoding=utf-8-sig, sep=';')
+2026-09-07 21:03:07 [INFO   ] src.supply:   rotacion del registro entre cortes:
+                      indicador  valor
+establecimientos_corte_anterior   2792
+  establecimientos_corte_actual   2838
+                   altas_nuevas     46
+            bajas_desaparecidas      0
+            cambio_de_categoria     17
+               cambio_de_estado     30
+     resolutivos_corte_anterior     45
+       resolutivos_corte_actual     48
+   ganaron_capacidad_resolutiva      2
+ perdieron_capacidad_resolutiva      1
+2026-09-07 21:03:07 [INFO   ] src.io_utils:   guardado  comparacion_temporal_renipress.csv     10 filas
+2026-09-07 21:03:07 [INFO   ] hw2: 
+2026-09-07 21:03:07 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:07 [INFO   ] hw2: FASE 1.7 — Resumen del ambito
+2026-09-07 21:03:07 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:07 [INFO   ] src.io_utils:   guardado  resumen_fase1.csv                 3 filas
+2026-09-07 21:03:07 [INFO   ] hw2: 
+departamento region_natural  distritos  centros_poblados  centros_sin_poblacion_raster  poblacion_total  poblacion_urbana  poblacion_rural  ipress_total  ipress_coord_valida  ipress_resolutivas  ipress_resolutivas_aptas  habitantes_por_resolutiva
+  LAMBAYEQUE          Costa         38              1914                          1011          1238761            938380           300380          1000                  553                  22                        18                      68820
+    AYACUCHO         Sierra        124             10078                          9233           715240            468604           246636           789                  721                  12                        12                      59603
+      LORETO          Selva         53              3426                          2902           778389            577641           200748          1049                  823                  14                        14                      55599
+2026-09-07 21:03:07 [INFO   ] hw2: 
+2026-09-07 21:03:07 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:07 [INFO   ] hw2: FASE 1.8 — Figuras y mapa de control
+2026-09-07 21:03:07 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:10 [INFO   ] src.export:   figura    fase1_ambito.png
+2026-09-07 21:03:10 [INFO   ] src.export:   figura    fase1_calidad.png
+2026-09-07 21:03:14 [INFO   ] src.export:   mapa      mapa_validacion_fase1.html
+2026-09-07 21:03:14 [INFO   ] hw2: 
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2: FASE 1 COMPLETA en 0.3 min
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2: Oferta            : 2838 IPRESS (44 resolutivas aptas para ruteo)
+2026-09-07 21:03:14 [INFO   ] hw2: Demanda           : 15418 centros poblados · 2732389 habitantes
+2026-09-07 21:03:14 [INFO   ] hw2: Reglas con hallazgos: 4/6
+2026-09-07 21:03:14 [INFO   ] hw2: Salidas en        : C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\data\processed
+2026-09-07 21:03:14 [INFO   ] hw2:                     C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\data\outputs
+2026-09-07 21:03:14 [WARNING] hw2: AVISO para la Fase 2: hay 15418 puntos de demanda y el tope del enunciado es 5000. Habra que aplicar el muestreo 'estratificado_distrito_ponderado_poblacion' declarado en config.md.
+2026-09-07 21:03:14 [INFO   ] hw2: 
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2: HW2 — FASE 2 · Ruteo y tiempos de viaje
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2: 
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2: FASE 2.1 — Insumos de la Fase 1
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2:   demanda      : 15418 centros poblados
+2026-09-07 21:03:14 [INFO   ] hw2:   resolutivas  : 44 aptas para ruteo
+2026-09-07 21:03:14 [INFO   ] hw2:   oferta total : 2097 aptas para ruteo (cualquier categoria)
+2026-09-07 21:03:14 [INFO   ] hw2: 
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2: FASE 2.2 — Servidores OSRM disponibles
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2:   car   DISPONIBLE en http://localhost:5000
+2026-09-07 21:03:14 [INFO   ] hw2:   foot  DISPONIBLE en http://localhost:5001
+2026-09-07 21:03:14 [INFO   ] hw2:   bike  DISPONIBLE en http://localhost:5002
+2026-09-07 21:03:14 [INFO   ] hw2: 
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2: FASE 2.3 — Muestreo de la demanda
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] src.routing:   muestreo estratificado: 15418 -> 5000 puntos en 215 distritos (semilla=42)
+2026-09-07 21:03:14 [INFO   ] src.routing:   poblacion representada: 2732389 de 2732389 (100.0000%)
+2026-09-07 21:03:14 [INFO   ] hw2: 
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2: FASE 2.4 — Enganche a la red vial (snapping)
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] src.routing:   [cache] snapping car    demanda  5000 puntos reutilizados
+2026-09-07 21:03:14 [INFO   ] src.routing:   snapping demanda-car: 5000/5000 enganchados · medio=5888m mediana=356m p95=34803m max=133754m · >1km: 1901 · >5km: 1124
+2026-09-07 21:03:14 [INFO   ] src.routing:   [cache] snapping car    oferta   44 puntos reutilizados
+2026-09-07 21:03:14 [INFO   ] src.routing:   snapping oferta-car: 44/44 enganchados · medio=15m mediana=10m p95=44m max=61m · >1km: 0 · >5km: 0
+2026-09-07 21:03:14 [INFO   ] src.routing:   fuera de red (snap > 2000 m): 1571/5000 puntos (31.4%) · 294234 habitantes (10.8% de la poblacion)
+2026-09-07 21:03:14 [INFO   ] src.routing:     AYACUCHO      238/2096 puntos ·   4.3% de su poblacion
+2026-09-07 21:03:14 [INFO   ] src.routing:     LAMBAYEQUE     25/1224 puntos ·   0.8% de su poblacion
+2026-09-07 21:03:14 [INFO   ] src.routing:     LORETO       1308/1680 puntos ·  32.5% de su poblacion
+2026-09-07 21:03:14 [INFO   ] src.routing:   sensibilidad al umbral de enganche:
+ umbral_m  puntos_fuera  pct_puntos  poblacion_fuera  pct_poblacion  pct_pob_ayac  pct_pob_lamb  pct_pob_lore
+      500          2274        45.5           388548           14.2           8.9           3.1          36.8
+     1000          1901        38.0           330946           12.1           6.8           1.3          34.3
+     2000          1571        31.4           294234           10.8           4.3           0.8          32.5
+     5000          1124        22.5           226327            8.3           1.2           0.2          27.7
+    10000           784        15.7           187711            6.9           0.0           0.1          24.0
+2026-09-07 21:03:14 [INFO   ] src.io_utils:   guardado  sensibilidad_umbral_snap.csv      5 filas
+2026-09-07 21:03:14 [INFO   ] src.io_utils:   guardado  snapping_diagnostico.csv          2 filas
+2026-09-07 21:03:14 [INFO   ] hw2: 
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] hw2: FASE 2.5 — Matriz completa origen x resolutiva, por modo
+2026-09-07 21:03:14 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:14 [INFO   ] src.routing:   [cache] matriz car   220000 pares reutilizados de matriz_car_83d3ed70e74b7252.parquet
+2026-09-07 21:03:14 [INFO   ] hw2:   matriz completa guardada en data/processed/matriz_car.parquet
+2026-09-07 21:03:15 [WARNING] src.routing:   197 de 4869 origenes (4.0%) tienen trayecto degenerado de 0 m: el origen y el establecimiento enganchan al mismo nodo de la red. Se marcan `snap_colapsado` y se excluyen de los estadisticos de tiempo.
+2026-09-07 21:03:15 [WARNING] src.routing:   131 de 5000 origenes no alcanzan NINGUN establecimiento resolutivo por carretera (2.6%)
+2026-09-07 21:03:15 [INFO   ] src.routing:   [cache] matriz foot  220000 pares reutilizados de matriz_foot_5ac1d48490105600.parquet
+2026-09-07 21:03:15 [WARNING] src.routing:   30 de 4557 origenes (0.7%) tienen trayecto degenerado de 0 m: el origen y el establecimiento enganchan al mismo nodo de la red. Se marcan `snap_colapsado` y se excluyen de los estadisticos de tiempo.
+2026-09-07 21:03:15 [WARNING] src.routing:   443 de 5000 origenes no alcanzan NINGUN establecimiento resolutivo por carretera (8.9%)
+2026-09-07 21:03:15 [INFO   ] src.routing:   [cache] matriz bike  220000 pares reutilizados de matriz_bike_4f6577c16a17aa62.parquet
+2026-09-07 21:03:15 [WARNING] src.routing:   30 de 4557 origenes (0.7%) tienen trayecto degenerado de 0 m: el origen y el establecimiento enganchan al mismo nodo de la red. Se marcan `snap_colapsado` y se excluyen de los estadisticos de tiempo.
+2026-09-07 21:03:15 [WARNING] src.routing:   443 de 5000 origenes no alcanzan NINGUN establecimiento resolutivo por carretera (8.9%)
+2026-09-07 21:03:15 [INFO   ] hw2: 
+2026-09-07 21:03:15 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:15 [INFO   ] hw2: FASE 2.6 — Comparacion entre modos
+2026-09-07 21:03:15 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:15 [INFO   ] src.routing:   comparacion entre modos:
+2026-09-07 21:03:15 [INFO   ] src.routing:     AYACUCHO     mediana car=66.1 min
+2026-09-07 21:03:15 [INFO   ] src.routing:                   foot mediana=748.1 min · razon vs car: 10.52 (p90 23.7) · cambia el mas cercano en 33.1% de los puntos
+2026-09-07 21:03:15 [INFO   ] src.routing:                   bike mediana=301.5 min · razon vs car: 4.13 (p90 9.88) · cambia el mas cercano en 32.8% de los puntos
+2026-09-07 21:03:15 [INFO   ] src.routing:     LAMBAYEQUE   mediana car=28.7 min
+2026-09-07 21:03:15 [INFO   ] src.routing:                   foot mediana=401.9 min · razon vs car: 12.6 (p90 20.12) · cambia el mas cercano en 17.4% de los puntos
+2026-09-07 21:03:15 [INFO   ] src.routing:                   bike mediana=184.2 min · razon vs car: 6.02 (p90 10.85) · cambia el mas cercano en 47.3% de los puntos
+2026-09-07 21:03:15 [INFO   ] src.routing:     LORETO       mediana car=126.1 min
+2026-09-07 21:03:15 [INFO   ] src.routing:                   foot mediana=636.4 min · razon vs car: 6.54 (p90 18.88) · cambia el mas cercano en 28.0% de los puntos
+2026-09-07 21:03:15 [INFO   ] src.routing:                   bike mediana=251.8 min · razon vs car: 2.63 (p90 13.21) · cambia el mas cercano en 28.0% de los puntos
+2026-09-07 21:03:15 [INFO   ] src.io_utils:   guardado  comparacion_modos.csv             3 filas
+2026-09-07 21:03:15 [INFO   ] hw2: 
+2026-09-07 21:03:15 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:15 [INFO   ] hw2: FASE 2.7 — Acceso urbano caminando (cualquier categoria)
+2026-09-07 21:03:15 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:15 [INFO   ] src.routing:   acceso urbano a pie: 390 puntos urbanos x 2097 establecimientos de cualquier categoria
+2026-09-07 21:03:15 [INFO   ] src.routing:   [cache] matriz foot_urbano 817830 pares reutilizados de matriz_foot_urbano_39647fca35fa5535.parquet
+2026-09-07 21:03:15 [WARNING] src.routing:   68 de 390 origenes (17.4%) tienen trayecto degenerado de 0 m: el origen y el establecimiento enganchan al mismo nodo de la red. Se marcan `snap_colapsado` y se excluyen de los estadisticos de tiempo.
+2026-09-07 21:03:15 [INFO   ] src.routing:   tiempo caminando al establecimiento mas cercano (cualquier categoria):
+2026-09-07 21:03:15 [INFO   ] src.routing:     depto            n mediana      p90 colapsad 
+2026-09-07 21:03:15 [INFO   ] src.routing:     AYACUCHO       160    4.3'    22.5'        5  (3% de sus puntos)
+2026-09-07 21:03:15 [INFO   ] src.routing:     LAMBAYEQUE     112    7.0'    56.6'        0  (0% de sus puntos)
+2026-09-07 21:03:15 [INFO   ] src.routing:     LORETO          50    5.8'    39.4'       63  (56% de sus puntos)
+2026-09-07 21:03:15 [INFO   ] src.io_utils:   guardado  acceso_urbano_pie.csv           390 filas
+2026-09-07 21:03:15 [INFO   ] hw2: 
+2026-09-07 21:03:15 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:15 [INFO   ] hw2: FASE 2.8 — Consolidado por punto de demanda
+2026-09-07 21:03:15 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:15 [INFO   ] src.io_utils:   guardado  acceso_puntos.parquet          5000 filas  0.6 MB
+2026-09-07 21:03:15 [INFO   ] src.io_utils:   guardado  acceso_puntos.gpkg           (copia para QGIS)
+2026-09-07 21:03:15 [INFO   ] hw2: 
+2026-09-07 21:03:15 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:15 [INFO   ] hw2: FASE 2.9 — Resumen del acceso por departamento
+2026-09-07 21:03:15 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:15 [INFO   ] src.io_utils:   guardado  resumen_fase2.csv                 3 filas
+2026-09-07 21:03:15 [INFO   ] hw2: 
+departamento region_natural  puntos  poblacion  pct_inalcanzable_por_carretera  pct_pob_fuera_de_red  t_mediana_todos_min  t_mediana_en_red_min  t_p90_en_red_min
+  LAMBAYEQUE          Costa    1224    1238761                             0.0                   0.8                 28.7                  28.3              84.8
+    AYACUCHO         Sierra    2096     715240                             0.0                   4.3                 66.1                  60.2             160.6
+      LORETO          Selva    1680     778389                             7.8                  32.5                126.1                  47.3            2204.5
+2026-09-07 21:03:15 [INFO   ] hw2: 
+2026-09-07 21:03:15 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:15 [INFO   ] hw2: FASE 2.10 — Figuras
+2026-09-07 21:03:15 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:15 [INFO   ] src.export:   figura    fase2_acceso.png
+2026-09-07 21:03:16 [INFO   ] src.export:   figura    fase2_snapping.png
+2026-09-07 21:03:16 [INFO   ] src.export:   figura    fase2_modos.png
+2026-09-07 21:03:16 [INFO   ] hw2: 
+2026-09-07 21:03:16 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:16 [INFO   ] hw2: FASE 2 COMPLETA en 0.0 min
+2026-09-07 21:03:16 [INFO   ] hw2: ======================================================================
+2026-09-07 21:03:16 [INFO   ] hw2: Modos calculados  : car, foot, bike
+2026-09-07 21:03:16 [INFO   ] hw2: Peticiones a OSRM : 3 · 0.1s de red
+2026-09-07 21:03:16 [INFO   ] hw2: Salidas en        : C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\data\processed
+2026-09-07 21:03:16 [INFO   ] hw2:                     C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\data\outputs
