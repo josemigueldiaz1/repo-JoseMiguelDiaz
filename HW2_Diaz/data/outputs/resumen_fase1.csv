@@ -1,0 +1,4 @@
+departamento,region_natural,distritos,centros_poblados,centros_sin_poblacion_raster,poblacion_total,poblacion_urbana,poblacion_rural,ipress_total,ipress_coord_valida,ipress_resolutivas,ipress_resolutivas_aptas,habitantes_por_resolutiva
+LAMBAYEQUE,Costa,38,1914,1011,1238761,938380,300380,1000,553,22,18,68820
+AYACUCHO,Sierra,124,10078,9233,715240,468604,246636,789,721,12,12,59603
+LORETO,Selva,53,3426,2902,778389,577641,200748,1049,823,14,14,55599

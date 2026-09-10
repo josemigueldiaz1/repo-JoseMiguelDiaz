@@ -1,0 +1,127 @@
+2026-09-07 20:33:17 [INFO   ] hw2: Log de esta corrida: C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\logs\fase2_20260907_203317.log
+2026-09-07 20:33:17 [INFO   ] hw2: 
+2026-09-07 20:33:17 [INFO   ] hw2: ======================================================================
+2026-09-07 20:33:17 [INFO   ] hw2: HW2 — FASE 2 · Ruteo y tiempos de viaje
+2026-09-07 20:33:17 [INFO   ] hw2: ======================================================================
+2026-09-07 20:33:17 [INFO   ] hw2: 
+2026-09-07 20:33:17 [INFO   ] hw2: ======================================================================
+2026-09-07 20:33:17 [INFO   ] hw2: FASE 2.1 — Insumos de la Fase 1
+2026-09-07 20:33:17 [INFO   ] hw2: ======================================================================
+2026-09-07 20:33:18 [INFO   ] hw2:   demanda      : 15418 centros poblados
+2026-09-07 20:33:18 [INFO   ] hw2:   resolutivas  : 44 aptas para ruteo
+2026-09-07 20:33:18 [INFO   ] hw2:   oferta total : 2097 aptas para ruteo (cualquier categoria)
+2026-09-07 20:33:18 [INFO   ] hw2: 
+2026-09-07 20:33:18 [INFO   ] hw2: ======================================================================
+2026-09-07 20:33:18 [INFO   ] hw2: FASE 2.2 — Servidores OSRM disponibles
+2026-09-07 20:33:18 [INFO   ] hw2: ======================================================================
+2026-09-07 20:33:18 [INFO   ] hw2:   car   DISPONIBLE en http://localhost:5000
+2026-09-07 20:33:18 [INFO   ] hw2:   foot  DISPONIBLE en http://localhost:5001
+2026-09-07 20:33:18 [INFO   ] hw2:   bike  DISPONIBLE en http://localhost:5002
+2026-09-07 20:33:18 [INFO   ] hw2: 
+2026-09-07 20:33:18 [INFO   ] hw2: ======================================================================
+2026-09-07 20:33:18 [INFO   ] hw2: FASE 2.3 — Muestreo de la demanda
+2026-09-07 20:33:18 [INFO   ] hw2: ======================================================================
+2026-09-07 20:33:18 [INFO   ] src.routing:   muestreo estratificado: 15418 -> 5000 puntos en 215 distritos (semilla=42)
+2026-09-07 20:33:18 [INFO   ] src.routing:   poblacion representada: 2732389 de 2732389 (100.0000%)
+2026-09-07 20:33:18 [INFO   ] hw2: 
+2026-09-07 20:33:18 [INFO   ] hw2: ======================================================================
+2026-09-07 20:33:18 [INFO   ] hw2: FASE 2.4 — Enganche a la red vial (snapping)
+2026-09-07 20:33:18 [INFO   ] hw2: ======================================================================
+2026-09-07 20:33:26 [INFO   ] src.routing:     snapping 500/5000
+2026-09-07 20:33:33 [INFO   ] src.routing:     snapping 1000/5000
+2026-09-07 20:33:41 [INFO   ] src.routing:     snapping 1500/5000
+2026-09-07 20:33:49 [INFO   ] src.routing:     snapping 2000/5000
+2026-09-07 20:33:56 [INFO   ] src.routing:     snapping 2500/5000
+2026-09-07 20:34:03 [INFO   ] src.routing:     snapping 3000/5000
+2026-09-07 20:34:09 [INFO   ] src.routing:     snapping 3500/5000
+2026-09-07 20:34:15 [INFO   ] src.routing:     snapping 4000/5000
+2026-09-07 20:34:22 [INFO   ] src.routing:     snapping 4500/5000
+2026-09-07 20:34:28 [INFO   ] src.routing:     snapping 5000/5000
+2026-09-07 20:34:28 [INFO   ] src.routing:   snapping car/demanda calculado en 70s
+2026-09-07 20:34:28 [INFO   ] src.routing:   snapping demanda-car: 5000/5000 enganchados · medio=5888m mediana=356m p95=34803m max=133754m · >1km: 1901 · >5km: 1124
+2026-09-07 20:34:29 [INFO   ] src.routing:   snapping car/oferta calculado en 1s
+2026-09-07 20:34:29 [INFO   ] src.routing:   snapping oferta-car: 44/44 enganchados · medio=15m mediana=10m p95=44m max=61m · >1km: 0 · >5km: 0
+2026-09-07 20:34:29 [INFO   ] src.routing:   fuera de red (snap > 2000 m): 1571/5000 puntos (31.4%) · 294234 habitantes (10.8% de la poblacion)
+2026-09-07 20:34:29 [INFO   ] src.routing:     AYACUCHO      238/2096 puntos ·   4.3% de su poblacion
+2026-09-07 20:34:29 [INFO   ] src.routing:     LAMBAYEQUE     25/1224 puntos ·   0.8% de su poblacion
+2026-09-07 20:34:29 [INFO   ] src.routing:     LORETO       1308/1680 puntos ·  32.5% de su poblacion
+2026-09-07 20:34:29 [INFO   ] src.routing:   sensibilidad al umbral de enganche:
+ umbral_m  puntos_fuera  pct_puntos  poblacion_fuera  pct_poblacion  pct_pob_ayac  pct_pob_lamb  pct_pob_lore
+      500          2274        45.5           388548           14.2           8.9           3.1          36.8
+     1000          1901        38.0           330946           12.1           6.8           1.3          34.3
+     2000          1571        31.4           294234           10.8           4.3           0.8          32.5
+     5000          1124        22.5           226327            8.3           1.2           0.2          27.7
+    10000           784        15.7           187711            6.9           0.0           0.1          24.0
+2026-09-07 20:34:29 [INFO   ] src.io_utils:   guardado  sensibilidad_umbral_snap.csv      5 filas
+2026-09-07 20:34:29 [INFO   ] src.io_utils:   guardado  snapping_diagnostico.csv          2 filas
+2026-09-07 20:34:29 [INFO   ] hw2: 
+2026-09-07 20:34:29 [INFO   ] hw2: ======================================================================
+2026-09-07 20:34:29 [INFO   ] hw2: FASE 2.5 — Matriz completa origen x resolutiva, por modo
+2026-09-07 20:34:29 [INFO   ] hw2: ======================================================================
+2026-09-07 20:34:29 [INFO   ] src.routing:   calculando matriz car: 5000 origenes x 44 destinos = 220000 pares
+2026-09-07 20:34:31 [INFO   ] src.routing:     matriz bloque 10/25 · 2.3s · 5055 peticiones
+2026-09-07 20:34:33 [INFO   ] src.routing:     matriz bloque 20/25 · 4.0s · 5065 peticiones
+2026-09-07 20:34:34 [INFO   ] src.routing:     matriz bloque 25/25 · 5.0s · 5070 peticiones
+2026-09-07 20:34:34 [INFO   ] src.routing:   matriz car lista en 5.0s · 220000 pares · 5764 inalcanzables (2.62%)
+2026-09-07 20:34:34 [INFO   ] hw2:   matriz completa guardada en data/processed/matriz_car.parquet
+2026-09-07 20:34:34 [WARNING] src.routing:   131 de 5000 origenes no alcanzan NINGUN establecimiento resolutivo por carretera (2.6%)
+2026-09-07 20:34:34 [INFO   ] src.routing:   calculando matriz foot: 5000 origenes x 44 destinos = 220000 pares
+2026-09-07 20:34:37 [INFO   ] src.routing:     matriz bloque 10/25 · 3.1s · 11 peticiones
+2026-09-07 20:34:39 [INFO   ] src.routing:     matriz bloque 20/25 · 4.9s · 21 peticiones
+2026-09-07 20:34:40 [INFO   ] src.routing:     matriz bloque 25/25 · 6.0s · 26 peticiones
+2026-09-07 20:34:40 [INFO   ] src.routing:   matriz foot lista en 6.0s · 220000 pares · 161695 inalcanzables (73.50%)
+2026-09-07 20:34:40 [WARNING] src.routing:   443 de 5000 origenes no alcanzan NINGUN establecimiento resolutivo por carretera (8.9%)
+2026-09-07 20:34:40 [INFO   ] src.routing:   calculando matriz bike: 5000 origenes x 44 destinos = 220000 pares
+2026-09-07 20:34:44 [INFO   ] src.routing:     matriz bloque 10/25 · 3.3s · 11 peticiones
+2026-09-07 20:34:45 [INFO   ] src.routing:     matriz bloque 20/25 · 4.9s · 21 peticiones
+2026-09-07 20:34:46 [INFO   ] src.routing:     matriz bloque 25/25 · 6.0s · 26 peticiones
+2026-09-07 20:34:47 [INFO   ] src.routing:   matriz bike lista en 6.0s · 220000 pares · 161695 inalcanzables (73.50%)
+2026-09-07 20:34:47 [WARNING] src.routing:   443 de 5000 origenes no alcanzan NINGUN establecimiento resolutivo por carretera (8.9%)
+2026-09-07 20:34:47 [INFO   ] hw2: 
+2026-09-07 20:34:47 [INFO   ] hw2: ======================================================================
+2026-09-07 20:34:47 [INFO   ] hw2: FASE 2.6 — Comparacion entre modos
+2026-09-07 20:34:47 [INFO   ] hw2: ======================================================================
+2026-09-07 20:34:47 [ERROR  ] hw2: El pipeline fallo:
+Traceback (most recent call last):
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\internals\blocks.py", line 1115, in setitem
+    casted = np_can_hold_element(values.dtype, value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\dtypes\cast.py", line 1830, in np_can_hold_element
+    raise LossySetitemError
+pandas.errors.LossySetitemError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\run_pipeline.py", line 476, in main
+    return FASES[args.phase](args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\run_pipeline.py", line 344, in fase_2
+    acceso, comp = rt.comparar_modos(mejores, muestra)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\src\routing.py", line 616, in comparar_modos
+    base.loc[~amb, f"cambia_vs_car_{p}"] = pd.NA
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\indexing.py", line 938, in __setitem__
+    iloc._setitem_with_indexer(indexer, value, self.name)
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\indexing.py", line 1953, in _setitem_with_indexer
+    self._setitem_with_indexer_split_path(indexer, value, name)
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\indexing.py", line 2044, in _setitem_with_indexer_split_path
+    self._setitem_single_column(loc, value, pi)
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\indexing.py", line 2181, in _setitem_single_column
+    self.obj._mgr.column_setitem(loc, plane_indexer, value)
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\internals\managers.py", line 1541, in column_setitem
+    new_mgr = col_mgr.setitem((idx,), value)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\internals\managers.py", line 620, in setitem
+    return self.apply("setitem", indexer=indexer, value=value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\internals\managers.py", line 445, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\internals\blocks.py", line 1118, in setitem
+    nb = self.coerce_to_target_dtype(value, raise_on_upcast=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\josem\.venvs\hw2-geo\Lib\site-packages\pandas\core\internals\blocks.py", line 468, in coerce_to_target_dtype
+    raise TypeError(f"Invalid value '{other}' for dtype '{self.values.dtype}'")
+TypeError: Invalid value 'nan' for dtype 'bool'

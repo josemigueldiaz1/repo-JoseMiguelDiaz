@@ -1,0 +1,4 @@
+departamento,n_puntos,alcanzables_car,t_mediana_car_min,alcanzables_foot,t_mediana_foot_min,alcanzables_bike,t_mediana_bike_min,pct_cambia_foot,razon_foot_car_mediana,razon_foot_car_p90,pct_cambia_bike,razon_bike_car_mediana,razon_bike_car_p90
+AYACUCHO,2096,2096,66.1,2096,748.1,2096,301.5,33.1,10.52,23.7,32.8,4.13,9.88
+LAMBAYEQUE,1224,1224,28.7,1198,401.9,1198,184.2,17.4,12.6,20.12,47.3,6.02,10.85
+LORETO,1680,1549,126.1,1263,636.4,1263,251.8,28.0,6.54,18.88,28.0,2.63,13.21

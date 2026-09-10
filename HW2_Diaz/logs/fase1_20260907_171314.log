@@ -1,0 +1,135 @@
+2026-09-07 17:13:14 [INFO   ] hw2: Log de esta corrida: C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\logs\fase1_20260907_171314.log
+2026-09-07 17:13:14 [INFO   ] hw2: 
+2026-09-07 17:13:14 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:14 [INFO   ] hw2: HW2 — FASE 1 · Adquisicion y validacion de datos
+2026-09-07 17:13:14 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:14 [INFO   ] hw2: Departamentos : LAMBAYEQUE (Costa), AYACUCHO (Sierra), LORETO (Selva)
+2026-09-07 17:13:14 [INFO   ] hw2: Resolutivas   : II-1, II-2, II-E, III-1, III-2, III-E
+2026-09-07 17:13:14 [INFO   ] hw2: Estados activos: ACTIVO
+2026-09-07 17:13:14 [INFO   ] hw2: Formato salida: parquet
+2026-09-07 17:13:14 [INFO   ] src.acquisition: ----------------------------------------------------------------------
+2026-09-07 17:13:14 [INFO   ] src.acquisition: FASE 1.1 — Adquisicion de datos
+2026-09-07 17:13:14 [INFO   ] src.acquisition: ----------------------------------------------------------------------
+2026-09-07 17:13:15 [INFO   ] src.acquisition:   [cache] renipress              ya existe (19.8 MB), no se re-descarga
+2026-09-07 17:13:16 [INFO   ] src.acquisition:   [cache] renipress_anterior     ya existe (19.1 MB), no se re-descarga
+2026-09-07 17:13:17 [INFO   ] src.acquisition:   [cache] centros_poblados       ya existe (6.0 MB), no se re-descarga
+2026-09-07 17:13:17 [INFO   ] src.acquisition:   [cache] distritos              ya existe (18.8 MB), no se re-descarga
+2026-09-07 17:13:18 [INFO   ] src.acquisition:   [cache] poblacion_raster       ya existe (6.4 MB), no se re-descarga
+2026-09-07 17:13:18 [INFO   ] src.acquisition:   [skip]  poblacion_raster_alta_res omitido (usa --hi-res-pop para bajar los 596 MB del raster unconstrained)
+2026-09-07 17:13:18 [INFO   ] src.acquisition:   [skip]  osm                    omitido (usa --with-osm para bajar los 244 MB del extracto OSM)
+2026-09-07 17:13:18 [INFO   ] src.acquisition:   [cache] CCPP_0.zip ya descomprimido
+2026-09-07 17:13:18 [INFO   ] src.acquisition:   [cache] DISTRITOS_LIMITES.zip ya descomprimido
+2026-09-07 17:13:18 [INFO   ] src.acquisition: Adquisicion completa: 5 archivo(s) disponibles en C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\data\raw
+2026-09-07 17:13:18 [INFO   ] hw2: 
+2026-09-07 17:13:18 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:18 [INFO   ] hw2: FASE 1.2 — Limites distritales
+2026-09-07 17:13:18 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:18 [INFO   ] hw2:   1891 distritos a nivel nacional
+2026-09-07 17:13:18 [INFO   ] hw2:   215 distritos en el ambito
+2026-09-07 17:13:18 [INFO   ] hw2:   por departamento: {'AYACUCHO': 124, 'LAMBAYEQUE': 38, 'LORETO': 53}
+2026-09-07 17:13:18 [INFO   ] src.supply: ----------------------------------------------------------------------
+2026-09-07 17:13:18 [INFO   ] src.supply: FASE 1.2 — Oferta: establecimientos de salud (RENIPRESS)
+2026-09-07 17:13:18 [INFO   ] src.supply: ----------------------------------------------------------------------
+2026-09-07 17:13:18 [INFO   ] src.supply:   RENIPRESS_31-08-2026.csv: 36004 registros x 31 columnas (encoding=utf-8-sig, sep=';')
+2026-09-07 17:13:19 [INFO   ] src.validation:   !! R6   Problemas de codificacion en campos de texto   marcados=4      CORREGIDO
+2026-09-07 17:13:19 [INFO   ] src.validation:        -> recuperados 4/4 (100.0%), descartados 0
+2026-09-07 17:13:19 [INFO   ] src.supply:   categoria normalizada: 8552 sin categoria utilizable (23.8%)
+2026-09-07 17:13:19 [INFO   ] src.supply:   distribucion: {'I-1': 11780, 'SIN_CATEGORIA': 8552, 'I-2': 8505, 'I-3': 5897, 'I-4': 498, 'II-E': 347, 'II-1': 273, 'II-2': 90, 'III-1': 35, 'III-2': 17, 'III-E': 10}
+2026-09-07 17:13:19 [INFO   ] src.validation:   OK R5   Codigos duplicados en `COD_IPRESS`             marcados=0      SIN_HALLAZGOS
+2026-09-07 17:13:19 [INFO   ] src.validation:   !! R1   Coordenadas ausentes, nulas o cero             marcados=13176  RETENIDO_CON_ADVERTENCIA
+2026-09-07 17:13:19 [INFO   ] src.validation:   OK R3   Latitud y longitud intercambiadas              marcados=0      SIN_HALLAZGOS
+2026-09-07 17:13:19 [INFO   ] src.validation:   !! R2   Coordenadas fuera del bounding box del Peru    marcados=5      RETENIDO_CON_ADVERTENCIA
+2026-09-07 17:13:19 [INFO   ] src.validation:        coordenadas utilizables: 22823/36004 (63.4%)
+2026-09-07 17:13:19 [INFO   ] src.validation:   !! R4   Punto fuera del distrito que el registro decla marcados=1719   RETENIDO_CON_ADVERTENCIA
+2026-09-07 17:13:19 [INFO   ] src.validation:        -> recuperados 350/1719 (20.4%), descartados 0
+2026-09-07 17:13:19 [INFO   ] src.supply:   nacional: 26901 activos · 677 resolutivos · 615 resolutivos aptos para ruteo
+2026-09-07 17:13:19 [INFO   ] src.supply:   ambito (LAMBAYEQUE, AYACUCHO, LORETO): 2838 establecimientos · 48 resolutivos · 44 resolutivos aptos
+2026-09-07 17:13:19 [INFO   ] src.supply:   categorias por departamento:
+categoria     I-1  I-2  I-3  I-4  II-1  II-2  II-E  III-1  SIN_CATEGORIA
+departamento                                                            
+AYACUCHO      378  134  155   16    10     2     5      0             89
+LAMBAYEQUE    119  219  179    8     5     1    17      2            450
+LORETO        396  253  142   23     7     3     4      2            219
+2026-09-07 17:13:19 [INFO   ] hw2: 
+2026-09-07 17:13:19 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:19 [INFO   ] hw2: FASE 1.4 — Demanda: centros poblados y poblacion
+2026-09-07 17:13:19 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:19 [INFO   ] hw2:   raster de poblacion en uso: per_ppp_2020_UNadj_constrained.tif
+2026-09-07 17:13:19 [INFO   ] src.demand:   leyendo centros poblados: CCPP_IGN100K.shp
+2026-09-07 17:13:21 [INFO   ] src.demand:     136587 centros poblados a nivel nacional
+2026-09-07 17:13:21 [INFO   ] src.demand:     15481 en LAMBAYEQUE, AYACUCHO, LORETO
+2026-09-07 17:13:21 [WARNING] src.demand:     63 centros poblados no cayeron dentro de ningun distrito (borde/costa); se descartan del dataset de demanda
+2026-09-07 17:13:21 [INFO   ] src.demand:     15418 centros poblados con distrito asignado
+2026-09-07 17:13:21 [INFO   ] src.demand:   imputando poblacion desde per_ppp_2020_UNadj_constrained.tif
+2026-09-07 17:13:21 [INFO   ] src.demand:     distritos procesados 50/215
+2026-09-07 17:13:21 [INFO   ] src.demand:     distritos procesados 100/215
+2026-09-07 17:13:22 [INFO   ] src.demand:     distritos procesados 150/215
+2026-09-07 17:13:24 [INFO   ] src.demand:     distritos procesados 200/215
+2026-09-07 17:13:25 [INFO   ] src.demand:     distritos procesados 215/215
+2026-09-07 17:13:25 [WARNING] src.demand:     17 distrito(s) sin celdas pobladas en el raster: 050402, 050406, 050411, 050413, 050704, 050707, 050802, 050808...
+2026-09-07 17:13:25 [INFO   ] src.demand:     poblacion en el raster (ambito): 2732389
+2026-09-07 17:13:25 [INFO   ] src.demand:     poblacion asignada a centros poblados: 2732389 (100.0000% del raster)
+2026-09-07 17:13:25 [INFO   ] src.demand:     centros poblados sin poblacion en el raster: 13146/15418 (85.3%)
+2026-09-07 17:13:25 [INFO   ] src.demand:     poblacion imputada por departamento: {'AYACUCHO': 715240, 'LAMBAYEQUE': 1238761, 'LORETO': 778389}
+2026-09-07 17:13:25 [WARNING] src.demand:     LIMITACION: los distritos sin celdas pobladas y los 13146 centros poblados con cero habitantes reflejan el sesgo conocido del producto 'constrained' en zonas de asentamiento disperso (Amazonia). Se conservan con peso 0 y el informe lo declara.
+2026-09-07 17:13:25 [INFO   ] src.demand:     urbano=441 (72.6% de la poblacion) · rural=14977
+2026-09-07 17:13:25 [INFO   ] src.demand:     poblacion_minima=0: se conservan los 15418 puntos de demanda, incluidos los de peso 0
+2026-09-07 17:13:25 [INFO   ] hw2: 
+2026-09-07 17:13:25 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:25 [INFO   ] hw2: FASE 1.5 — Escritura de resultados
+2026-09-07 17:13:25 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:25 [INFO   ] src.io_utils:   guardado  oferta_salud.parquet           2838 filas  0.2 MB
+2026-09-07 17:13:25 [INFO   ] src.io_utils:   guardado  oferta_salud.gpkg            (copia para QGIS)
+2026-09-07 17:13:25 [INFO   ] src.io_utils:   guardado  demanda_ccpp.parquet          15418 filas  0.9 MB
+2026-09-07 17:13:25 [INFO   ] src.io_utils:   guardado  demanda_ccpp.gpkg            (copia para QGIS)
+2026-09-07 17:13:25 [INFO   ] src.io_utils:   guardado  distritos.parquet               215 filas  3.0 MB
+2026-09-07 17:13:26 [INFO   ] src.io_utils:   guardado  distritos.gpkg               (copia para QGIS)
+2026-09-07 17:13:26 [INFO   ] src.validation:   reporte de calidad -> data_quality_oferta.csv
+2026-09-07 17:13:26 [INFO   ] src.validation:   reporte de calidad -> data_quality_oferta.md
+2026-09-07 17:13:26 [INFO   ] hw2: 
+2026-09-07 17:13:26 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:26 [INFO   ] hw2: FASE 1.6 — Innovacion: rotacion temporal del registro
+2026-09-07 17:13:26 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:26 [INFO   ] src.supply:   comparacion temporal: RENIPRESS_30-04-2026.csv vs RENIPRESS_31-08-2026.csv
+2026-09-07 17:13:26 [INFO   ] src.supply:   RENIPRESS_30-04-2026.csv: 35471 registros x 31 columnas (encoding=utf-8-sig, sep=';')
+2026-09-07 17:13:26 [INFO   ] src.supply:   RENIPRESS_31-08-2026.csv: 36004 registros x 31 columnas (encoding=utf-8-sig, sep=';')
+2026-09-07 17:13:26 [INFO   ] src.supply:   rotacion del registro entre cortes:
+                      indicador  valor
+establecimientos_corte_anterior   2792
+  establecimientos_corte_actual   2838
+                   altas_nuevas     46
+            bajas_desaparecidas      0
+            cambio_de_categoria     17
+               cambio_de_estado     30
+     resolutivos_corte_anterior     45
+       resolutivos_corte_actual     48
+   ganaron_capacidad_resolutiva      2
+ perdieron_capacidad_resolutiva      1
+2026-09-07 17:13:26 [INFO   ] src.io_utils:   guardado  comparacion_temporal_renipress.csv     10 filas
+2026-09-07 17:13:26 [INFO   ] hw2: 
+2026-09-07 17:13:26 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:26 [INFO   ] hw2: FASE 1.7 — Resumen del ambito
+2026-09-07 17:13:26 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:26 [INFO   ] src.io_utils:   guardado  resumen_fase1.csv                 3 filas
+2026-09-07 17:13:26 [INFO   ] hw2: 
+departamento region_natural  distritos  centros_poblados  centros_sin_poblacion_raster  poblacion_total  poblacion_urbana  poblacion_rural  ipress_total  ipress_coord_valida  ipress_resolutivas  ipress_resolutivas_aptas  habitantes_por_resolutiva
+  LAMBAYEQUE          Costa         38              1914                          1011          1238761            938380           300380          1000                  553                  22                        18                      68820
+    AYACUCHO         Sierra        124             10078                          9233           715240            468604           246636           789                  721                  12                        12                      59603
+      LORETO          Selva         53              3426                          2902           778389            577641           200748          1049                  823                  14                        14                      55599
+2026-09-07 17:13:26 [INFO   ] hw2: 
+2026-09-07 17:13:26 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:26 [INFO   ] hw2: FASE 1.8 — Figuras y mapa de control
+2026-09-07 17:13:26 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:29 [INFO   ] src.export:   figura    fase1_ambito.png
+2026-09-07 17:13:29 [INFO   ] src.export:   figura    fase1_calidad.png
+2026-09-07 17:13:29 [INFO   ] hw2:   mapa interactivo omitido (--skip-map)
+2026-09-07 17:13:29 [INFO   ] hw2: 
+2026-09-07 17:13:29 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:29 [INFO   ] hw2: FASE 1 COMPLETA en 0.2 min
+2026-09-07 17:13:29 [INFO   ] hw2: ======================================================================
+2026-09-07 17:13:29 [INFO   ] hw2: Oferta            : 2838 IPRESS (44 resolutivas aptas para ruteo)
+2026-09-07 17:13:29 [INFO   ] hw2: Demanda           : 15418 centros poblados · 2732389 habitantes
+2026-09-07 17:13:29 [INFO   ] hw2: Reglas con hallazgos: 4/6
+2026-09-07 17:13:29 [INFO   ] hw2: Salidas en        : C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\data\processed
+2026-09-07 17:13:29 [INFO   ] hw2:                     C:\Users\josem\OneDrive\Documentos\GitHub\personal\HW2_Diaz\data\outputs
+2026-09-07 17:13:29 [WARNING] hw2: AVISO para la Fase 2: hay 15418 puntos de demanda y el tope del enunciado es 5000. Habra que aplicar el muestreo 'estratificado_distrito_ponderado_poblacion' declarado en config.md.

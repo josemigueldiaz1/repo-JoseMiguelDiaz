@@ -1,0 +1,62 @@
+{
+  "renipress": {
+    "archivo": "RENIPRESS_31-08-2026.csv",
+    "url_efectiva": "https://www.datosabiertos.gob.pe/sites/default/files/RENIPRESS_31-08-2026.csv",
+    "url_es_respaldo": false,
+    "fecha_descarga_utc": "2026-09-07T21:06:39+00:00",
+    "bytes": 19763567,
+    "sha256": "7d48b7aac1d2f0ec1d4ac1de86ceb5aac4397c8208cd6203534d2c863c26ea6e",
+    "licencia": "Datos Abiertos Gobierno del Perú",
+    "cita": "SUSALUD (2026). Registro Nacional de Entidades Prestadoras de Servicios de Salud."
+  },
+  "renipress_anterior": {
+    "archivo": "RENIPRESS_30-04-2026.csv",
+    "url_efectiva": "https://www.datosabiertos.gob.pe/sites/default/files/RENIPRESS_30-04-2026.csv",
+    "url_es_respaldo": false,
+    "fecha_descarga_utc": "2026-09-07T21:06:42+00:00",
+    "bytes": 19074859,
+    "sha256": "a65c7a8458794b4073f6b2ad8ebafb5749ac6036844ab3e464df573beeb60972",
+    "licencia": "Datos Abiertos Gobierno del Perú",
+    "cita": "SUSALUD (2026). RENIPRESS, corte 30-04-2026."
+  },
+  "centros_poblados": {
+    "archivo": "CCPP_0.zip",
+    "url_efectiva": "https://www.datosabiertos.gob.pe/sites/default/files/CCPP_0.zip",
+    "url_es_respaldo": false,
+    "fecha_descarga_utc": "2026-09-07T21:06:43+00:00",
+    "bytes": 6019493,
+    "sha256": "1b2fc20b5c9b704f4fa645a52d813f2cc626f0d57f2ac7fea272ff20cb7a6362",
+    "licencia": "Datos Abiertos Gobierno del Perú",
+    "cita": "Instituto Geográfico Nacional (IGN). Centros Poblados, escala 1:100 000."
+  },
+  "distritos": {
+    "archivo": "DISTRITOS_LIMITES.zip",
+    "url_efectiva": "https://www.datosabiertos.gob.pe/sites/default/files/DISTRITOS_LIMITES.zip",
+    "url_es_respaldo": false,
+    "fecha_descarga_utc": "2026-09-07T21:06:46+00:00",
+    "bytes": 18752137,
+    "sha256": "6e305a08b5324f40095f9d77bcdcab3f313e890ca56dda1ff4813ad2564e1842",
+    "licencia": "Datos Abiertos Gobierno del Perú",
+    "cita": "Instituto Geográfico Nacional (IGN). Límites distritales."
+  },
+  "poblacion_raster": {
+    "archivo": "per_ppp_2020_UNadj_constrained.tif",
+    "url_efectiva": "https://data.worldpop.org/GIS/Population/Global_2000_2020_Constrained/2020/BSGM/PER/per_ppp_2020_UNadj_constrained.tif",
+    "url_es_respaldo": false,
+    "fecha_descarga_utc": "2026-09-07T21:06:56+00:00",
+    "bytes": 6360448,
+    "sha256": "4ae83e21094c1a0f469acbb0438ab5ec5cac210bbe279d5caac719c99274bd87",
+    "licencia": "Creative Commons Attribution 4.0",
+    "cita": "WorldPop (2020). Global High Resolution Population Denominators Project. University of Southampton."
+  },
+  "osm": {
+    "archivo": "peru-latest.osm.pbf",
+    "url_efectiva": "https://download.geofabrik.de/south-america/peru-latest.osm.pbf",
+    "url_es_respaldo": false,
+    "fecha_descarga_utc": "2026-09-07T23:02:22+00:00",
+    "bytes": 255844600,
+    "sha256": "83b879ec1fdec2d47e76df96a0f3c89e30e3334cb04469edf314ef7b83f12ac5",
+    "licencia": "Open Database License (ODbL)",
+    "cita": "OpenStreetMap contributors / Geofabrik GmbH."
+  }
+}

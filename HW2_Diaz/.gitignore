@@ -1,0 +1,43 @@
+﻿# --- datos crudos --------------------------------------------------------------------
+# data/raw/ NO se versiona: son ~290 MB de descargas publicas y reproducibles.
+# `python run_pipeline.py --phase 1` las vuelve a bajar, y data/raw/_manifest.json
+# (que SI se versiona) documenta URL, fecha y SHA-256 de cada archivo usado.
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/_manifest.json
+
+# Cache intermedio del ruteo (Fase 2). La matriz final si se versiona: el enunciado
+# exige que el dashboard funcione sin motor de ruteo.
+data/cache/*
+!data/cache/.gitkeep
+
+# data/external/ SI se versiona: son tablas pequenas de referencia que no se
+# pueden descargar de forma programatica, y hacen el repositorio autosuficiente.
+
+# --- Python ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# --- LaTeX ----------------------------------------------------------------------------
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+report/*.bbl
+report/*.blg
+report/*.synctex.gz
+report/*.fls
+report/*.fdb_latexmk
+
+# --- sistema --------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

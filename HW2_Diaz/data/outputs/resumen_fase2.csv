@@ -1,0 +1,4 @@
+departamento,region_natural,puntos,poblacion,pct_inalcanzable_por_carretera,pct_pob_fuera_de_red,t_mediana_todos_min,t_mediana_en_red_min,t_p90_en_red_min
+LAMBAYEQUE,Costa,1224,1238761,0.0,0.8,28.7,28.3,84.8
+AYACUCHO,Sierra,2096,715240,0.0,4.3,66.1,60.2,160.6
+LORETO,Selva,1680,778389,7.8,32.5,126.1,47.3,2204.5
