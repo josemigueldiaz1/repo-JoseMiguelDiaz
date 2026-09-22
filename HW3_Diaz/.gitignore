@@ -1,0 +1,51 @@
+# ---------------------------------------------------------------- credenciales
+# Lo mas importante de este archivo. El enunciado exige que ninguna credencial
+# llegue al repositorio, y una clave filtrada permanece en el historial de git
+# aunque despues se borre del archivo.
+.env
+*.key
+secrets.*
+
+# ------------------------------------------------------------------ entornos
+.venv/
+venv/
+env/
+ENV/
+
+# -------------------------------------------------------------------- Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ------------------------------------------------------------- datos pesados
+# Los PDF normativos y los bulk de OECE se vuelven a descargar solos con
+# `python run_all.py`. Versionarlos haria el repositorio inutilmente pesado y
+# el enunciado admite "un script documentado que los regenere".
+tarea1_rag_normativo/data/raw/
+tarea2_radar/data/raw/
+
+# El indice vectorial es un artefacto derivado: se reconstruye desde los
+# fragmentos procesados. Ademas ChromaDB guarda binarios SQLite que generan
+# conflictos de merge irresolubles.
+tarea1_rag_normativo/data/index/
+tarea2_radar/data/index/
+
+# --------------------------------------------------------- salidas de corrida
+# Se conservan los reportes (.md, .csv) porque son entregables; se ignoran los
+# logs con marca de tiempo, que son uno por ejecucion.
+*.log
+logs/*.log
+tarea1_rag_normativo/logs/*.log
+tarea2_radar/logs/*.log
+
+# ----------------------------------------------------------- cache de modelos
+.cache/
+*.pkl
+
+# -------------------------------------------------------------------- sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*.docx
