@@ -1,0 +1,6 @@
+timestamp_utc,timestamp_local,tarea,modelo,franja,tokens_entrada,tokens_entrada_cache_hit,tokens_salida,tokens_total,latencia_seg,costo_usd,exito,error,pregunta
+2026-09-22T02:18:15+00:00,2026-09-21T22:18:15-04:00,tarea2,deepseek-chat,pico,2096,0,512,2608,4.225,0.0012432,True,,obras de agua y saneamiento 
+2026-09-22T02:19:42+00:00,2026-09-21T22:19:42-04:00,tarea2,deepseek-chat,pico,2096,1920,586,2682,2.867,0.00076752,True,,obras de agua y saneamiento 
+2026-09-22T02:21:44+00:00,2026-09-21T22:21:44-04:00,tarea2,deepseek-chat,pico,2096,1920,586,2682,3.293,0.00076752,True,,obras de agua y saneamiento 
+2026-09-22T02:22:01+00:00,2026-09-21T22:22:01-04:00,tarea2,deepseek-chat,pico,2096,1920,586,2682,3.122,0.00076752,True,,obras de agua y saneamiento 
+2026-09-22T02:24:47+00:00,2026-09-21T22:24:47-04:00,tarea2,deepseek-chat,pico,2096,1920,586,2682,3.045,0.00076752,True,,obras de agua y saneamiento 
