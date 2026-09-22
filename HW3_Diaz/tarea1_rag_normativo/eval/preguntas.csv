@@ -1,0 +1,26 @@
+id,pregunta,tipo,documento_esperado,paginas_esperadas,estilo,afecta_modificatoria,nota
+P01,¿Cuáles son los principios rectores de la contratación pública?,in_domain,ley_32069,3;4;5,formal,FALSE,Artículo 5 de la Ley
+P02,¿Qué es un contrato menor y bajo qué condiciones procede?,in_domain,ley_32069,19;20,formal,FALSE,Artículo 34 de la Ley
+P03,¿En qué casos se declara desierto un procedimiento de selección?,in_domain,ley_32069,27;28,formal,FALSE,Artículo 56 de la Ley
+P04,¿Qué garantías puede exigir la entidad contratante al contratista?,in_domain,ley_32069,28;29;30,formal,FALSE,Artículo 61 de la Ley
+P05,¿Qué se considera fraccionamiento de una contratación?,in_domain,ley_32069,24;25,formal,FALSE,Artículo 50 de la Ley
+P06,¿Cuál es la oportunidad para presentar un recurso de apelación?,in_domain,ley_32069,35;36;37,formal,FALSE,Artículo 73 de la Ley
+P07,¿Qué tipos de adelantos puede entregar la entidad al contratista?,in_domain,ley_32069,32;33,formal,FALSE,Artículo 66 de la Ley
+P08,¿Cuáles son los impedimentos para contratar con el Estado?,in_domain,ley_32069,17;18,formal,FALSE,Artículo 30 de la Ley
+P09,¿Qué sanciones puede imponer el Tribunal de Contrataciones Públicas?,in_domain,ley_32069,44;45;46,formal,FALSE,Artículos 88 a 92 de la Ley
+P10,¿Qué es la Pladicop y para qué sirve?,in_domain,ley_32069,21;22,formal,FALSE,Artículo 41 de la Ley
+P11,"Soy una empresa chiquita, ¿el Estado me da alguna ventaja para venderle?",in_domain,ley_32069,29;32;36,coloquial,FALSE,Menciones a micro y pequeña empresa
+P12,"Si gano la buena pro y después no firmo el contrato, ¿qué me pueden hacer?",in_domain,ley_32069,44;45,coloquial,FALSE,Régimen de sanciones e inhabilitación
+P13,"Me sacaron del proceso y creo que fue injusto, ¿cuánto tiempo tengo para reclamar?",in_domain,ley_32069,35;36;37,coloquial,FALSE,Recurso de apelación visto por un no abogado
+P14,"Me piden una carta fianza, ¿eso qué es y para qué la quieren?",in_domain,ley_32069,28;29;30,coloquial,FALSE,Garantías en lenguaje llano
+P15,"¿Me pueden pagar algo por adelantado para comprar los materiales?",in_domain,ley_32069,32;33,coloquial,FALSE,Adelanto para materiales e insumos
+P16,"Si el contrato se cae por culpa de la entidad, ¿puedo ir a arbitraje?",in_domain,ley_32069,39;40;41,coloquial,FALSE,Medios de solución de controversias
+P17,¿Qué modificación introdujo el decreto en los requisitos de calificación?,in_domain,ds_001_2026_ef,4;5,formal,TRUE,Artículo 72 modificado por el DS 001-2026-EF
+P18,¿Se puede aprobar una prestación adicional de obra en vía de regularización?,in_domain,ds_001_2026_ef,9;10,formal,TRUE,Artículo 194 modificado por el DS 001-2026-EF
+P19,¿Cómo se evalúan ahora las ofertas en la comparación de precios?,in_domain,ds_001_2026_ef,5;6,formal,TRUE,Artículo 98 modificado por el DS 001-2026-EF
+P20,¿Qué cambió en el cronograma de los procedimientos de selección?,in_domain,ds_001_2026_ef,3;4,formal,TRUE,Artículo 64 modificado por el DS 001-2026-EF
+P21,¿Cómo preparo un ceviche de pescado?,out_domain,,,coloquial,FALSE,Fuera de dominio evidente. Es el ejemplo del enunciado
+P22,¿Cuál es la capital de Francia?,out_domain,,,formal,FALSE,Fuera de dominio evidente
+P23,¿Qué plazo exacto tiene el comité de selección para absolver consultas y observaciones?,out_domain,,,formal,FALSE,"CERCANO: el plazo concreto está en el Reglamento, que no se indexa"
+P24,¿Qué anexos y formatos debe contener la declaración jurada de las bases estándar?,out_domain,,,formal,FALSE,CERCANO: los formatos son materia del Reglamento y de las bases estándar
+P25,¿Cuánto cuesta la tasa de inscripción en el Registro Nacional de Proveedores?,out_domain,,,coloquial,FALSE,"CERCANO: la tasa es materia del TUPA y del Reglamento, no de la Ley"

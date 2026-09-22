@@ -1,0 +1,26 @@
+id,tipo,sim_corpus,sim_control,delta,pregunta
+P01,in_domain,0.9133,0.8549,-0.0583,¿Cuáles son los principios rectores de la contratación públi
+P02,in_domain,0.8754,0.8702,-0.0052,¿Qué es un contrato menor y bajo qué condiciones procede?
+P03,in_domain,0.9164,0.9032,-0.0132,¿En qué casos se declara desierto un procedimiento de selecc
+P04,in_domain,0.8693,0.8841,0.0147,¿Qué garantías puede exigir la entidad contratante al contra
+P05,in_domain,0.8941,0.8669,-0.0271,¿Qué se considera fraccionamiento de una contratación?
+P06,in_domain,0.8842,0.8875,0.0033,¿Cuál es la oportunidad para presentar un recurso de apelaci
+P07,in_domain,0.9119,0.8879,-0.024,¿Qué tipos de adelantos puede entregar la entidad al contrat
+P08,in_domain,0.8836,0.8819,-0.0018,¿Cuáles son los impedimentos para contratar con el Estado?
+P09,in_domain,0.9168,0.8966,-0.0202,¿Qué sanciones puede imponer el Tribunal de Contrataciones P
+P10,in_domain,0.8865,0.888,0.0016,¿Qué es la Pladicop y para qué sirve?
+P11,in_domain,0.8474,0.8412,-0.0062,"Soy una empresa chiquita, ¿el Estado me da alguna ventaja pa"
+P12,in_domain,0.8706,0.8829,0.0123,"Si gano la buena pro y después no firmo el contrato, ¿qué me"
+P13,in_domain,0.8496,0.8556,0.006,"Me sacaron del proceso y creo que fue injusto, ¿cuánto tiemp"
+P14,in_domain,0.8493,0.851,0.0016,"Me piden una carta fianza, ¿eso qué es y para qué la quieren"
+P15,in_domain,0.8675,0.8724,0.0049,¿Me pueden pagar algo por adelantado para comprar los materi
+P16,in_domain,0.8759,0.8811,0.0052,"Si el contrato se cae por culpa de la entidad, ¿puedo ir a a"
+P17,in_domain,0.8606,0.863,0.0024,¿Qué modificación introdujo el decreto en los requisitos de 
+P18,in_domain,0.9035,0.892,-0.0115,¿Se puede aprobar una prestación adicional de obra en vía de
+P19,in_domain,0.8824,0.9031,0.0207,¿Cómo se evalúan ahora las ofertas en la comparación de prec
+P20,in_domain,0.8605,0.8895,0.0289,¿Qué cambió en el cronograma de los procedimientos de selecc
+P21,out_domain,0.7934,0.7944,0.0011,¿Cómo preparo un ceviche de pescado?
+P22,out_domain,0.7626,0.7616,-0.001,¿Cuál es la capital de Francia?
+P23,out_domain,0.8869,0.8812,-0.0057,¿Qué plazo exacto tiene el comité de selección para absolver
+P24,out_domain,0.8625,0.8721,0.0096,¿Qué anexos y formatos debe contener la declaración jurada d
+P25,out_domain,0.8587,0.8587,-0.0,¿Cuánto cuesta la tasa de inscripción en el Registro Naciona

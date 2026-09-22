@@ -1,0 +1,9 @@
+patron,coincidencias_eliminadas
+"Reglamento\s+de\s+la\s+Ley\s+N[ºo°]?\s*32069[^\n]{0,80}",266
+"P[aá]gina\s+\d{1,3}\s+de\s+\d{1,3}",249
+"\d{0,3}\s*NORMAS\s*LEGALES\s*(?:Lunes|Martes|Mi[eé]rcoles|Jueves|Viernes|S[aá]bado|Domingo)\s*\d{1,2}\s*de\s*[A-Za-zÁÉÍÓÚáéíóú]+\s*de\s*\d{4}\s*El\s*Peruano\s*/",16
+NORMAS\s*LEGALES,4
+El\s*Peruano\s*/,0
+"^\s*\d{1,3}\s*$",0
+Firmado\s+Digitalmente\s+por[^\n]*,0
+https?://\S*elperuano\S*,0

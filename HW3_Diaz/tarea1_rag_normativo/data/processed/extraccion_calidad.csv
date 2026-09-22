@@ -1,0 +1,4 @@
+documento,descripcion,version,indexado,paginas,paginas_utiles,paginas_descartadas,motivo_descarte,caracteres_antes,caracteres_despues,pct_texto_eliminado,caracteres_por_pagina
+ley_32069,"Ley N.o 32069, Ley General de Contrataciones Publicas (versi",2026-07-19,True,63,63,0,"menos de 40 caracteres tras limpiar (portada, separador o anexo vacio)",220096,215215,2.22,3416.1
+ds_001_2026_ef,"Decreto Supremo N.o 001-2026-EF, que modifica el Reglamento ",2026-01-08,True,16,16,0,"menos de 40 caracteres tras limpiar (portada, separador o anexo vacio)",112477,109623,2.54,6851.4
+reglamento,Reglamento de la Ley N.o 32069 (version actualizada hasta el,2026-01-09,False,249,249,0,"menos de 40 caracteres tras limpiar (portada, separador o anexo vacio)",923743,880651,4.66,3536.8
