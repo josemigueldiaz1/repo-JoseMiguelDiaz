@@ -1,0 +1,7 @@
+paso,procesos,pct
+1_campo_departamento,20422,100.0
+2_campo_region,0,0.0
+3_imputado_por_entidad,0,0.0
+4_fuzzy_localidad,0,0.0
+5_no_localizado,0,0.0
+TOTAL_LOCALIZADOS,20422,100.0

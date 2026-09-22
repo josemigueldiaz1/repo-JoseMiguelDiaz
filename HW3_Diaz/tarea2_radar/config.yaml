@@ -1,0 +1,402 @@
+# =============================================================================
+#  TAREA 2 — Radar RAG de compras publicas
+#
+#  Mismo principio que la Tarea 1: ningun parametro vive en el codigo. Las
+#  secciones `embeddings`, `indice`, `motor` y `costos` tienen DELIBERADAMENTE
+#  la misma forma que las de la Tarea 1, porque las consume el mismo codigo:
+#  esta tarea reutiliza el motor, no lo reimplementa.
+# =============================================================================
+
+proyecto:
+  nombre: "Radar de Compras Publicas — OECE / OCDS"
+  autor: "Jose Miguel Diaz"
+
+rutas:
+  raw: "data/raw"              # ZIP mensuales tal como los sirve OECE
+  processed: "data/processed"  # un registro por proceso, ya validado
+  outputs: "data/outputs"      # tablas y figuras del dashboard
+  index: "data/index"
+  logs: "logs"
+  eval: "eval"
+
+# -----------------------------------------------------------------------------
+#  Adquisicion (Fase 1)
+# -----------------------------------------------------------------------------
+# El portal de contrataciones abiertas es una aplicacion Angular: su HTML no
+# contiene ningun enlace de descarga. Los endpoints de abajo se obtuvieron
+# inspeccionando el bundle JavaScript de la propia aplicacion (ver
+# logs/incidencias.md, I-01). Son la API publica que usa el portal.
+adquisicion:
+  api_base: "https://contratacionesabiertas.oece.gob.pe/api/v1"
+  endpoint_catalogo: "/files"        # lista los archivos mensuales disponibles
+  endpoint_releases: "/releases"     # entregas OCDS recientes (uso incremental)
+  endpoint_record: "/record"         # un proceso por su ocid
+
+  fuente: "seace_v3"
+  formato: "csv"        # el ZIP con CSV pesa 8.7 MB/mes; el XLSX 16.4 MB
+  idioma: "es"          # cabeceras en espanol
+
+  # Corpus obligatorio: al menos tres meses de 2026.
+  meses:
+    - {anio: 2026, mes: "06"}
+    - {anio: 2026, mes: "07"}
+    - {anio: 2026, mes: "08"}
+
+  # Throttling y reintentos. La API responde bien, pero el enunciado exige que un
+  # fallo no pierda el trabajo previo: cada mes se descarga a un temporal y se
+  # renombra al terminar, de modo que un corte nunca deja un ZIP a medias que la
+  # siguiente corrida daria por bueno.
+  segundos_entre_peticiones: 1.0
+  timeout_seg: 600
+  reintentos: 3
+  verificar_sha: true    # el endpoint /sha permite comprobar integridad
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) HW3-Diaz/1.0 (uso academico)"
+
+  # Tablas del ZIP que se usan. El ZIP trae 22 CSV; solo estos tres hacen falta.
+  tabla_registros: "Registros.csv"
+  tabla_partes: "Ent_PartesInvolucradas.csv"
+  tabla_adjudicaciones: "Ent_Adjudicaciones.csv"
+
+# -----------------------------------------------------------------------------
+#  Mapeo de columnas OCDS -> nombres cortos
+# -----------------------------------------------------------------------------
+# Las cabeceras en espanol de OECE son larguisimas ("Entrega compilada:Licitación:
+# Descripción de la licitación"). Se renombran aqui, en configuracion, para que el
+# codigo no lleve esas cadenas incrustadas y para que un cambio de cabecera en el
+# origen se arregle en un solo sitio.
+columnas:
+  registros:
+    "Open Contracting ID": "ocid"
+    "Entrega compilada:Licitación:ID de licitación": "id_licitacion"
+    "Entrega compilada:Licitación:Título de la licitación": "titulo"
+    "Entrega compilada:Licitación:Descripción de la licitación": "descripcion"
+    "Entrega compilada:Comprador:Nombre de la Organización": "comprador"
+    "Entrega compilada:Comprador:ID de Organización": "comprador_id"
+    "Entrega compilada:Licitación:Categoría principal de contratación": "categoria"
+    "Entrega compilada:Licitación:Detalles del método de contratación": "metodo"
+    "Entrega compilada:Licitación:Valor:Monto": "monto"
+    "Entrega compilada:Licitación:Valor:Moneda": "moneda"
+    "compiledRelease/tender/datePublished": "fecha_publicacion"
+    "Entrega compilada:Licitación:Número de licitantes": "n_licitantes"
+    "Entrega compilada:Licitación:Periodo de licitación:Fecha de inicio": "licitacion_inicio"
+    "Entrega compilada:Licitación:Periodo de licitación:Fecha de fin": "licitacion_fin"
+    "Entrega compilada:Segmentación:ID": "segmento"
+    # El "periodo de consulta" es la ventana real en la que un proveedor puede pedir
+    # aclaraciones y observar las bases. Es la que sirve para medir si hubo tiempo
+    # suficiente para competir; el "periodo de licitacion" de arriba NO sirve, porque
+    # su inicio y su fin son siempre el mismo instante (ver logs/incidencias.md, I-07).
+    "Entrega compilada:Licitación:Periodo de consulta:Fecha de inicio": "consulta_inicio"
+    "Entrega compilada:Licitación:Periodo de consulta:Fecha de fin": "consulta_fin"
+    "Entrega compilada:Licitación:Periodo de consulta:Duración (días)": "consulta_dias"
+  partes:
+    "Open Contracting ID": "ocid"
+    "Entrega compilada:Partes involucradas:ID de Entidad": "entidad_id"
+    "Entrega compilada:Partes involucradas:Nombre común": "entidad_nombre"
+    "Entrega compilada:Partes involucradas:Roles de las partes": "roles"
+    "Entrega compilada:Partes involucradas:Dirección:Departamento": "departamento_crudo"
+    "Entrega compilada:Partes involucradas:Dirección:Región": "region_cruda"
+    "Entrega compilada:Partes involucradas:Dirección:Localidad": "localidad_cruda"
+  adjudicaciones:
+    "Open Contracting ID": "ocid"
+    "Entrega compilada:Adjudicaciones:ID de Adjudicación": "id_adjudicacion"
+    "Entrega compilada:Adjudicaciones:Valor:Monto": "monto_adjudicado"
+    "Entrega compilada:Adjudicaciones:Fecha de adjudicación": "fecha_adjudicacion"
+
+# -----------------------------------------------------------------------------
+#  Validacion y normalizacion territorial (Fase 2)
+# -----------------------------------------------------------------------------
+validacion:
+  # Los 25 departamentos del Peru, incluido Callao. Sin tildes, en mayusculas:
+  # es la forma canonica a la que se normaliza todo.
+  departamentos:
+    - AMAZONAS
+    - ANCASH
+    - APURIMAC
+    - AREQUIPA
+    - AYACUCHO
+    - CAJAMARCA
+    - CALLAO
+    - CUSCO
+    - HUANCAVELICA
+    - HUANUCO
+    - ICA
+    - JUNIN
+    - LA LIBERTAD
+    - LAMBAYEQUE
+    - LIMA
+    - LORETO
+    - MADRE DE DIOS
+    - MOQUEGUA
+    - PASCO
+    - PIURA
+    - PUNO
+    - SAN MARTIN
+    - TACNA
+    - TUMBES
+    - UCAYALI
+
+  # Variantes ortograficas reales que aparecen en los datos y que la
+  # normalizacion por tildes NO resuelve por si sola.
+  alias:
+    CUZCO: CUSCO
+    "PROV. CONST. DEL CALLAO": CALLAO
+    "PROVINCIA CONSTITUCIONAL DEL CALLAO": CALLAO
+    "LIMA METROPOLITANA": LIMA
+    "LIMA PROVINCIAS": LIMA
+    ANCASH: ANCASH
+    "SAN MARTIN DE PORRES": LIMA
+
+  # Umbral de similitud para el emparejamiento difuso. 88 sobre 100 se eligio
+  # porque deja pasar "CUZCO"->"CUSCO" (80) solo via alias explicito, y evita
+  # que "PUNO" capture "PIURA". Ver logs/hallazgos.md.
+  umbral_fuzzy: 88
+
+  monto_minimo: 0          # montos <= 0 se marcan, no se borran
+  descripcion_minima: 10   # caracteres minimos para considerar que hay descripcion
+
+# -----------------------------------------------------------------------------
+#  Indicador de riesgo (Fase 5)
+# -----------------------------------------------------------------------------
+riesgo:
+  # Proporcion de procesos adjudicados con exactamente un postor.
+  min_procesos_por_comprador: 15
+  # Justificacion del minimo: con menos procesos la proporcion es demasiado
+  # inestable. Una entidad con 2 procesos y 1 postor unico daria 50%, que no
+  # distingue un patron de una coincidencia. Con 15 procesos, un 50% ya implica
+  # 8 casos, que si es un patron. El valor se puede mover desde aqui y el
+  # dashboard recalcula.
+  top_compradores: 10
+
+  # INNOVACION: segunda senal de alerta de la guia de Open Contracting Partnership.
+  plazo_corto:
+    activo: true
+    dias_minimos: 3
+    # Se mide sobre el PERIODO DE CONSULTA, no sobre el "periodo de licitacion":
+    # ese ultimo campo trae inicio y fin identicos en el 100% de los registros, asi
+    # que su duracion es siempre cero y no significa nada (ver logs/incidencias.md,
+    # I-07). El periodo de consulta si es una ventana real: es el tiempo que tiene un
+    # proveedor para pedir aclaraciones y observar las bases antes de ofertar.
+    #
+    # El corte de 3 dias sale de la distribucion observada, no de una intuicion:
+    # mediana 4 dias, percentil 25 en 2 dias, maximo 20. Marcar por debajo de 3
+    # senala aproximadamente el cuartil mas apretado. La guia de OCP advierte de que
+    # el umbral depende del regimen legal de cada pais, asi que se declara aqui y se
+    # puede mover sin tocar codigo.
+
+  aviso: >-
+    Una senal de alerta es un motivo para MIRAR MAS DE CERCA, nunca una prueba de
+    irregularidad. Un postor unico puede deberse a un mercado concentrado, a una
+    especializacion tecnica legitima o a una urgencia justificada. Este panel no
+    acusa a nadie y no publica nombres de personas naturales.
+
+# -----------------------------------------------------------------------------
+#  INNOVACION: puente entre el metodo de contratacion y la Ley
+# -----------------------------------------------------------------------------
+# HALLAZGO: los datos operativos de SEACE y la ley vigente NO hablan el mismo
+# idioma. SEACE sigue publicando los nombres de procedimiento de la Ley 30225
+# ("Adjudicacion Simplificada", "Licitacion Publica Abreviada"), mientras que la
+# Ley 32069 reestructuro la taxonomia por completo:
+#
+#   Articulo 54 - procedimientos de seleccion COMPETITIVOS
+#       a) licitacion publica  -> bienes y obras
+#       b) concurso publico    -> servicios
+#   Articulo 55 - procedimiento de seleccion NO COMPETITIVO
+#       contratar directamente, en los supuestos que enumera
+#
+# Buscar "Adjudicacion Simplificada" en la Ley devuelve CERO paginas: ese nombre
+# ya no existe. Sin este mapeo, la innovacion que enlaza las dos tareas se
+# abstendria siempre, y con razon: estaria preguntando por un concepto que la
+# norma vigente no nombra.
+#
+# El mapeo traduce el nombre operativo al concepto legal para poder preguntar por
+# lo que la Ley SI regula. Las entradas con `sin_equivalente: true` se marcan como
+# tales y el asistente lo advierte en vez de fingir que existen.
+innovacion:
+  mapeo_metodos:
+    "Licitación Pública": "licitación pública, procedimiento de selección competitivo para bienes y obras"
+    "Licitación Pública Abreviada": "licitación pública, procedimiento de selección competitivo para bienes y obras"
+    "Licitación Pública Abreviada Homologación": "licitación pública, procedimiento de selección competitivo para bienes y obras"
+    "Concurso Público": "concurso público, procedimiento de selección competitivo para servicios"
+    "Concurso Público Abreviado": "concurso público, procedimiento de selección competitivo para servicios"
+    "Concurso Público de Servicios": "concurso público, procedimiento de selección competitivo para servicios"
+    "Concurso Público para Consultoría": "concurso público, procedimiento de selección competitivo para servicios"
+    "Concurso Público Abreviado Homologación": "concurso público, procedimiento de selección competitivo para servicios"
+    "Contratación Directa": "contratar directamente, procedimiento de selección no competitivo"
+    "Subasta Inversa Electrónica": "subasta inversa electrónica"
+    "Comparación de Precios": "comparación de precios"
+    "Regímen Especial": "régimen especial de contratación"
+    "Contratos Estandarizados": "contratos estandarizados"
+    "Procedimiento Especial de Contratación": "procedimiento especial de contratación"
+
+  # Nombres de la Ley 30225 que la Ley 32069 ya NO usa. Se pregunta igual, pero
+  # advirtiendo del desfase: es informacion util, no un fallo que ocultar.
+  metodos_sin_equivalente:
+    - "Adjudicación Simplificada"
+    - "Adjudicación Selectiva"
+    - "Adjudicación Abreviada"
+
+  aviso_desfase: >-
+    Atencion: «{metodo}» es un nombre de procedimiento de la Ley 30225, que SEACE
+    sigue usando en sus datos. La Ley 32069 reorganizo los procedimientos en
+    competitivos (articulo 54) y no competitivo (articulo 55), y ese nombre ya no
+    aparece en ella. Lo que sigue responde por el concepto equivalente mas cercano.
+
+# -----------------------------------------------------------------------------
+#  Territorio (Fase 4, mapa coropletico)
+# -----------------------------------------------------------------------------
+territorio:
+  # GeoJSON de departamentos del Peru. Se declara una cadena de respaldo: si la
+  # primera URL no responde, se intenta la siguiente, y si ninguna responde el
+  # dashboard cae a un grafico de barras en vez de romperse.
+  geojson_urls:
+    - "https://raw.githubusercontent.com/juaneladio/peru-geojson/master/peru_departamental_simple.geojson"
+    - "https://raw.githubusercontent.com/jmcastagnetto/peru-mapas-geojson/main/geojson/departamentos.geojson"
+  archivo: "departamentos.geojson"
+  campo_nombre: ["NOMBDEP", "departamento", "NOMBRE", "name"]
+
+# -----------------------------------------------------------------------------
+#  Embeddings — EL MISMO MODELO LOCAL QUE LA TAREA 1
+# -----------------------------------------------------------------------------
+# Identico a proposito. El enunciado pide indexar las descripciones "with the same
+# local embeddings model as Task 1", y ademas permite comprobar si el umbral
+# calibrado alli transfiere a este corpus (Fase 3, punto 3).
+embeddings:
+  activo: "local"
+  local:
+    modelo: "intfloat/multilingual-e5-small"
+    dimension: 384
+    max_tokens: 512
+    prefijo_consulta: "query: "
+    prefijo_pasaje: "passage: "
+    normalizar: true
+    lote: 64
+  api:
+    modelo: "text-embedding-3-small"
+    dimension: 1536
+    max_tokens: 8191
+    prefijo_consulta: ""
+    prefijo_pasaje: ""
+    normalizar: true
+    lote: 64
+    usd_por_millon_tokens: 0.02
+
+indice:
+  motor: "chromadb"
+  coleccion: "procesos_local"
+  coleccion_api: "procesos_api"
+  metrica: "cosine"
+
+# -----------------------------------------------------------------------------
+#  Motor RAG hibrido (Fase 3)
+# -----------------------------------------------------------------------------
+motor:
+  top_k: 8
+
+  # ¿TRANSFIERE EL UMBRAL DE LA TAREA 1? El enunciado pide comprobarlo y recalibrar
+  # si hace falta. Se midio sobre el conjunto de evaluacion de esta tarea, y la
+  # respuesta es SI: 0.82 da 93.3% de aciertos con CERO abstenciones incorrectas,
+  # mientras que 0.86 da el mismo 93.3% pero rechazando una pregunta valida.
+  #
+  # El valor inicial de este campo fue 0.86, puesto por la suposicion razonable de
+  # que las descripciones de procesos —textos cortos y telegraficos— desplazarian la
+  # distribucion de similitudes frente al lenguaje juridico de una ley. La medicion
+  # desmintio la suposicion y el valor se corrigio. Ver logs/hallazgos.md (H-07).
+  umbral_similitud: 0.82
+  umbral_tarea1: 0.82
+  barrido_umbral: [0.78, 0.80, 0.82, 0.84, 0.86, 0.88, 0.90]
+
+  proveedor: "deepseek"
+  modelo: "deepseek-chat"
+  base_url: "https://api.deepseek.com"
+  temperatura: 0.0
+  max_tokens: 800
+  timeout_seg: 90
+  formato_json: true
+
+  prompts:
+    sistema: |
+      Eres un analista de compras publicas del Peru. Respondes preguntas sobre procesos
+      de contratacion usando UNICAMENTE los procesos que se te entregan en el CONTEXTO.
+
+      Devuelves SIEMPRE un JSON valido con exactamente estos campos:
+        "puede_responder": true o false
+        "respuesta": string
+        "citas": lista de strings, cada una el ocid de un proceso citado
+        "motivo": string (solo si puede_responder es false)
+
+      REGLAS ABSOLUTAS:
+      1. Usa solo los procesos del CONTEXTO. No inventes procesos, montos ni entidades.
+      2. Cita cada proceso por su ocid en "citas".
+      3. Si el CONTEXTO no permite responder, pon "puede_responder": false.
+      4. Los montos estan en soles peruanos (PEN). No los conviertas.
+      5. Se concreto: menciona entidad, departamento y monto cuando sean relevantes.
+      6. Si la pregunta sugiere irregularidades, recuerda que los datos muestran
+         patrones, no delitos.
+
+    usuario: |
+      CONTEXTO (procesos recuperados):
+      {contexto}
+
+      FILTROS APLICADOS: {filtros}
+
+      PREGUNTA: {pregunta}
+
+      Devuelve el JSON siguiendo las reglas.
+
+  nota_version: ""
+
+  mensajes:
+    abstencion_baja_similitud: >-
+      No encontre procesos suficientemente parecidos a tu pregunta entre los que estan
+      indexados. Prueba a ampliar los filtros o a reformular.
+    abstencion_fuera_de_corpus: >-
+      Los procesos recuperados no permiten responder esa pregunta.
+    error_api: >-
+      El modelo de generacion devolvio un error. Esto es un fallo del sistema, no una
+      respuesta.
+    sin_resultados_filtros: >-
+      Ningun proceso cumple los filtros seleccionados. Amplia el rango de monto, fecha o
+      departamento.
+
+# -----------------------------------------------------------------------------
+#  Costos — mismos precios y misma logica horaria que la Tarea 1
+# -----------------------------------------------------------------------------
+costos:
+  verificado_el: "2026-09-20"
+  fuente: "https://api-docs.deepseek.com/quick_start/pricing"
+  moneda: "USD"
+  horas_pico_utc:
+    - {desde: "01:00", hasta: "04:00"}
+    - {desde: "06:00", hasta: "10:00"}
+  solo_dias_habiles: true
+  precios_por_millon:
+    pico:
+      entrada_cache_hit: 0.006
+      entrada_cache_miss: 0.30
+      salida: 1.20
+    valle:
+      entrada_cache_hit: 0.003
+      entrada_cache_miss: 0.15
+      salida: 0.60
+  archivo_log: "logs/costos.csv"
+
+# -----------------------------------------------------------------------------
+#  Evaluacion (Fase 3, punto 5)
+# -----------------------------------------------------------------------------
+evaluacion:
+  archivo_preguntas: "eval/preguntas.csv"
+  k_valores: [1, 3, 5]
+  salida: "eval/resultados"
+
+# -----------------------------------------------------------------------------
+#  Dashboard (Fase 4)
+# -----------------------------------------------------------------------------
+app:
+  titulo: "Radar de Compras Publicas"
+  subtitulo: "Que compra el Estado peruano, donde, y a quien preguntarselo en lenguaje natural."
+  ejemplos:
+    - "obras de agua y saneamiento en Cusco por mas de un millon de soles"
+    - "compra de computadoras o equipos informaticos en Lima"
+    - "servicios de consultoria para hospitales"
+    - "adquisicion de uniformes escolares"
+  max_filas_tabla: 500

@@ -1,0 +1,4 @@
+tamano,solapamiento,fragmentos,car_medio,segundos_indexado,recall@1,recall@3,recall@5,sim_media_in_domain,sim_media_out_domain
+500,75,908,371.5,9.9,0.8,0.85,1.0,0.8864,0.8307
+900,150,511,673.9,10.0,0.7,0.85,0.9,0.8809,0.8328
+1500,200,307,1109.0,10.1,0.8,0.9,0.9,0.874,0.8265

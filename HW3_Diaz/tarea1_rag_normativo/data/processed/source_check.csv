@@ -1,0 +1,4 @@
+documento,archivo,sha256,mb,paginas,caracteres,caracteres_por_pagina,paginas_sin_texto,pct_paginas_sin_texto,orden_correcto,usable,motivo,fecha_descarga,indexado
+"Ley N.o 32069, Ley General de Contrataciones Publicas (version actuali",ley_32069.pdf,f14ffa37b824b8af,0.55,63,220096,3493.6,0,0.0,True,True,usable tal cual,2026-09-21,True
+"Decreto Supremo N.o 001-2026-EF, que modifica el Reglamento de la Ley ",ds_001_2026_ef.pdf,2c272250c2cf5b5b,3.73,16,112477,7029.8,0,0.0,True,True,usable tal cual,2026-09-21,True
+Reglamento de la Ley N.o 32069 (version actualizada hasta el 09-01-202,reglamento_32069.pdf,0ebe95b3e05661b8,2.82,249,923743,3709.8,0,0.0,True,True,usable tal cual,2026-09-21,False

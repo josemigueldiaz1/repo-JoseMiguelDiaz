@@ -1,0 +1,16 @@
+id,tipo,pregunta,similitud_maxima,posicion_acierto,se_abstiene,ocid_1,departamento_1
+R01,in_domain,obras de agua potable y saneamiento,0.9064,1.0,False,ocds-dgv273-seacev3-1245005,AYACUCHO
+R02,in_domain,compra de computadoras y equipos informaticos,0.8874,1.0,False,ocds-dgv273-seacev3-1234072,LORETO
+R03,in_domain,servicios de consultoria para proyectos de inversion,0.8867,1.0,False,ocds-dgv273-seacev3-1237966,SAN MARTIN
+R04,in_domain,medicamentos e insumos para establecimientos de salud,0.8935,1.0,False,ocds-dgv273-seacev3-1232878,UCAYALI
+R05,in_domain,mejoramiento y rehabilitacion de carreteras y caminos,0.8538,1.0,False,ocds-dgv273-seacev3-1242652,CAJAMARCA
+R06,in_domain,alimentos para programas sociales,0.8859,1.0,False,ocds-dgv273-seacev3-1221205,PUNO
+R07,in_domain,construccion y mejoramiento de instituciones educativas,0.865,1.0,False,ocds-dgv273-seacev3-1237224,JUNIN
+R08,in_domain,servicios de seguridad y vigilancia,0.8941,1.0,False,ocds-dgv273-seacev3-1230731,LIMA
+R09,in_domain,adquisicion de combustible y carburantes,0.9125,1.0,False,ocds-dgv273-seacev3-1233689,AREQUIPA
+R10,in_domain,equipamiento y mobiliario para oficinas,0.8792,1.0,False,ocds-dgv273-seacev3-1233815,PUNO
+R11,in_domain,mantenimiento de redes electricas y alumbrado,0.885,1.0,False,ocds-dgv273-seacev3-1232978,UCAYALI
+R12,in_domain,servicios de limpieza publica y manejo de residuos soli,0.8794,2.0,False,ocds-dgv273-seacev3-2026-2409-35,AREQUIPA
+R90,out_domain,cual es la receta del ceviche peruano,0.8493,,False,ocds-dgv273-seacev3-1238579,CAJAMARCA
+R91,out_domain,quien gano el mundial de futbol de 2022,0.7792,,True,ocds-dgv273-seacev3-1223531,ANCASH
+R92,out_domain,cuantos habitantes tiene la ciudad de Tokio,0.788,,True,ocds-dgv273-seacev3-1239323,CUSCO

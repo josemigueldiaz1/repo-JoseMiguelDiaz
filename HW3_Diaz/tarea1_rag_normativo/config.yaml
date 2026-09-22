@@ -1,0 +1,323 @@
+# =============================================================================
+#  TAREA 1 — RAG Normativo sobre contrataciones publicas
+#
+#  El enunciado exige que NINGUN parametro viva en el codigo: rutas, nombres de
+#  modelo, tamano de fragmento, umbrales, prompts y mensajes al usuario estan
+#  todos aqui. Cambiar el comportamiento del sistema no deberia requerir abrir
+#  un solo archivo .py.
+#
+#  Las credenciales NO estan aqui: viven en .env (ver .env.example).
+# =============================================================================
+
+proyecto:
+  nombre: "RAG Normativo — Contrataciones Publicas del Peru"
+  autor: "Jose Miguel Diaz"
+
+# -----------------------------------------------------------------------------
+#  Rutas (relativas a la carpeta de esta tarea)
+# -----------------------------------------------------------------------------
+rutas:
+  raw: "data/raw"              # PDFs originales; NUNCA se modifican
+  processed: "data/processed"  # texto extraido y limpio, con su pagina
+  index: "data/index"          # persistencia de ChromaDB
+  logs: "logs"
+  eval: "eval"
+
+# -----------------------------------------------------------------------------
+#  Fuentes documentales
+# -----------------------------------------------------------------------------
+# `indexar: true`  -> entra al indice y el asistente puede responder con el.
+# `indexar: false` -> se descarga y se analiza, pero queda FUERA del indice.
+#
+# El Reglamento esta deliberadamente fuera. El enunciado pide demostrar que el
+# asistente reconoce los limites de su corpus: muchas preguntas reales solo las
+# responde el Reglamento, y ante ellas el sistema debe decir que no las cubre en
+# vez de improvisar con el fragmento mas parecido que encuentre. Tenerlo
+# descargado permite comprobar que la pregunta SI tenia respuesta en algun sitio,
+# solo que no en el corpus indexado.
+fuentes:
+  ley_32069:
+    descripcion: "Ley N.o 32069, Ley General de Contrataciones Publicas (version actualizada con modificatorias hasta el 19-07-2026)"
+    tipo: "ley"
+    institucion: "OECE / gob.pe"
+    version: "2026-07-19"
+    archivo: "ley_32069.pdf"
+    url: "https://cdn.www.gob.pe/uploads/document/file/9295551/6444155-ley-general-de-contrataciones-publicas-con-modificaciones-posteriores-hasta-el-19-07-2026.pdf"
+    pagina_fuente: "https://www.gob.pe/institucion/oece/colecciones/45029-ley-n-32069-ley-general-de-contrataciones-publicas-y-su-reglamento"
+    indexar: true
+
+  ds_001_2026_ef:
+    descripcion: "Decreto Supremo N.o 001-2026-EF, que modifica el Reglamento de la Ley N.o 32069"
+    tipo: "decreto_modificatorio"
+    institucion: "El Peruano / MEF"
+    version: "2026-01-08"
+    archivo: "ds_001_2026_ef.pdf"
+    url: "https://busquedas.elperuano.pe/api/archivo/file/4UFSj6jQKdnBeQxKkvTolN/*/2474920-3.PDF"
+    pagina_fuente: "https://busquedas.elperuano.pe/dispositivo/NL/2474920-3"
+    indexar: true
+    modifica: "reglamento_ds_009_2025_ef"
+
+  reglamento:
+    descripcion: "Reglamento de la Ley N.o 32069 (version actualizada hasta el 09-01-2026). FUERA DEL INDICE a proposito: sirve de control para demostrar los limites del corpus."
+    tipo: "reglamento"
+    institucion: "OECE / gob.pe"
+    version: "2026-01-09"
+    archivo: "reglamento_32069.pdf"
+    url: "https://cdn.www.gob.pe/uploads/document/file/7594705/6444155-reglamento-de-la-ley-general-de-contrataciones-publicas-con-modificaciones-posteriores-hasta-el-09-01-2026.pdf"
+    pagina_fuente: "https://www.gob.pe/institucion/oece/colecciones/45029-ley-n-32069-ley-general-de-contrataciones-publicas-y-su-reglamento"
+    indexar: false
+
+descarga:
+  timeout_seg: 180
+  reintentos: 3
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) HW3-Diaz/1.0 (uso academico)"
+
+# -----------------------------------------------------------------------------
+#  Comprobacion de fuentes (Fase 1)
+# -----------------------------------------------------------------------------
+# Umbrales para declarar un PDF "usable tal cual". El enunciado insiste en hacer
+# esta comprobacion ANTES de construir nada: una fuente ilegible cambia el plan
+# entero, y descubrirlo el ultimo dia es fatal.
+source_check:
+  min_caracteres_por_pagina: 200   # por debajo de esto se sospecha pagina escaneada
+  max_pct_paginas_vacias: 5.0      # si se supera, el PDF NO es usable tal cual
+  muestra_caracteres: 600          # tamano del extracto que se guarda como evidencia
+
+# -----------------------------------------------------------------------------
+#  Limpieza del texto (Fase 1)
+# -----------------------------------------------------------------------------
+# Los PDF de El Peruano pegan la cabecera de pagina al cuerpo del texto. Estas
+# reglas se aplican en orden y cada una queda contabilizada en el reporte, para
+# poder mostrar el antes y el despues que pide el enunciado.
+limpieza:
+  patrones_cabecera:
+    # --- El Peruano -----------------------------------------------------------
+    # La cabecera aparece en DOS variantes segun la pagina sea par o impar, y la
+    # impar viene SIN espacios de separacion. Se comprobo sobre el PDF real:
+    #   par:    "34 NORMAS LEGALES Jueves 8 de enero de 2026  El Peruano /"
+    #   impar:  "35NORMAS LEGALESJueves 8 de enero de 2026 El Peruano / "
+    # Un solo patron cubre ambas haciendo opcionales los espacios.
+    - '\d{0,3}\s*NORMAS\s*LEGALES\s*(?:Lunes|Martes|Mi[eé]rcoles|Jueves|Viernes|S[aá]bado|Domingo)\s*\d{1,2}\s*de\s*[A-Za-zÁÉÍÓÚáéíóú]+\s*de\s*\d{4}\s*El\s*Peruano\s*/'
+    # Red de seguridad por si alguna pagina trae la cabecera partida.
+    - 'El\s*Peruano\s*/'
+    - 'NORMAS\s*LEGALES'
+
+    # --- Reglamento y Ley (pie de pagina de gob.pe) ---------------------------
+    - 'Reglamento\s+de\s+la\s+Ley\s+N[ºo°]?\s*32069[^\n]{0,80}'
+    - 'P[aá]gina\s+\d{1,3}\s+de\s+\d{1,3}'
+
+    # --- genericos ------------------------------------------------------------
+    - '^\s*\d{1,3}\s*$'                             # numero de pagina suelto
+    - 'Firmado\s+Digitalmente\s+por[^\n]*'
+    - 'https?://\S*elperuano\S*'
+  unir_guion_fin_de_linea: true   # "contrata-\ncion" -> "contratacion"
+  colapsar_espacios: true
+  min_caracteres_parrafo: 40      # descarta restos sueltos tras limpiar
+
+# -----------------------------------------------------------------------------
+#  Chunking (Fase 2)
+# -----------------------------------------------------------------------------
+chunking:
+  # Valores en produccion. Se eligieron comparando las configuraciones de
+  # `barrido` contra el conjunto de evaluacion (ver eval/), no por defecto.
+  tamano: 900
+  solapamiento: 150
+  separadores: ["\nArtículo ", "\nArtculo ", "\n\n", "\n", ". ", " "]
+
+  # Configuraciones que se comparan en el barrido de la Fase 2.
+  barrido:
+    - {tamano: 500, solapamiento: 75}
+    - {tamano: 900, solapamiento: 150}
+    - {tamano: 1500, solapamiento: 200}
+
+# -----------------------------------------------------------------------------
+#  Embeddings (Fases 2 y 4)
+# -----------------------------------------------------------------------------
+# Una interfaz, dos implementaciones. Cambiar de modelo es cambiar `activo`.
+embeddings:
+  activo: "local"
+
+  local:
+    modelo: "intfloat/multilingual-e5-small"
+    dimension: 384
+    max_tokens: 512
+    # La familia E5 EXIGE prefijos distintos para consultas y para pasajes. Sin
+    # ellos la similitud cae de forma notable y silenciosa: no da error, solo
+    # recupera peor. Es uno de los puntos que el enunciado pide reportar.
+    prefijo_consulta: "query: "
+    prefijo_pasaje: "passage: "
+    normalizar: true
+    lote: 32
+
+  api:
+    modelo: "text-embedding-3-small"
+    dimension: 1536
+    max_tokens: 8191
+    prefijo_consulta: ""
+    prefijo_pasaje: ""
+    normalizar: true
+    lote: 64
+    # Precio verificado el 2026-09-20 en https://platform.openai.com/docs/pricing
+    usd_por_millon_tokens: 0.02
+
+# -----------------------------------------------------------------------------
+#  Indice vectorial (Fase 2)
+# -----------------------------------------------------------------------------
+indice:
+  motor: "chromadb"
+  coleccion: "normas_local"
+  coleccion_api: "normas_api"
+
+  # Coleccion de CONTROL con el Reglamento (la fuente que tiene `indexar: false`).
+  #
+  # ORIGEN: se construyo para intentar distinguir "no lo se" de "eso lo responde el
+  # Reglamento, que no esta en mi corpus". La hipotesis era que una pregunta de
+  # Reglamento se pareceria mas a esta coleccion que al corpus indexado.
+  #
+  # RESULTADO: la hipotesis es FALSA y esta medida. Ver logs/hallazgos.md (H-02) y
+  # eval/resultados/control_discriminacion.csv. Con un margen de 0.01 la comparacion
+  # atrapa 0 de 5 preguntas fuera de corpus y produce 4 falsos positivos sobre 20
+  # preguntas validas. La causa es de fondo: la Ley y su Reglamento son el mismo dominio
+  # y casi el mismo vocabulario, asi que ningun modelo de embeddings los separa.
+  #
+  # DECISION: la coleccion se construye y se conserva como evidencia del experimento y
+  # porque la usa la innovacion que enlaza las dos tareas, pero NO participa en la
+  # decision de abstenerse. Esa decision la toman los dos filtros de `motor`.
+  coleccion_control: "reglamento_control"
+  usar_control_para_abstener: false
+  # Coseno, no L2: los vectores estan normalizados y el coseno es la metrica con
+  # la que se calibro el umbral. Mezclarlas invalidaria el umbral.
+  metrica: "cosine"
+
+# -----------------------------------------------------------------------------
+#  Motor RAG (Fase 3)
+# -----------------------------------------------------------------------------
+motor:
+  top_k: 5
+
+  # Umbral de abstencion. Calibrado con el barrido de eval/evaluar.py sobre el
+  # conjunto de evaluacion; NO elegido a ojo. El enunciado avisa de que una
+  # pregunta fuera de dominio ("como preparo ceviche") alcanzo 0.79 de similitud
+  # con un umbral intuitivo de 0.78, es decir que la intuicion falla aqui.
+  umbral_similitud: 0.82
+  barrido_umbral: [0.70, 0.74, 0.78, 0.80, 0.82, 0.84, 0.86, 0.90]
+
+  # Generacion
+  proveedor: "deepseek"
+  modelo: "deepseek-chat"
+  base_url: "https://api.deepseek.com"
+  temperatura: 0.0     # ver README: aqui no se quiere creatividad, se quiere la norma
+  max_tokens: 700
+  timeout_seg: 90
+
+  # El modelo responde en JSON, no en prosa. El motivo es el requisito de la Fase 3 de
+  # que la abstencion sea "a structured field of the result, not inferred by comparing
+  # the text of the answer": con JSON, `puede_responder` es un booleano que el modelo
+  # rellena, y el motor lo lee como dato. Deducirlo del texto ("¿empieza por 'no'?")
+  # se rompe en cuanto el modelo reformula la frase.
+  formato_json: true
+
+  prompts:
+    sistema: |
+      Eres un asistente que responde preguntas sobre la normativa de contrataciones
+      publicas del Peru para pequenos empresarios (MYPE).
+
+      Devuelves SIEMPRE un JSON valido con exactamente estos campos:
+        "puede_responder": true o false
+        "respuesta": string
+        "citas": lista de strings con el formato "documento, p. N"
+        "motivo": string (solo si puede_responder es false)
+
+      REGLAS ABSOLUTAS:
+      1. Responde UNICAMENTE con lo que digan los fragmentos del CONTEXTO. No uses
+         conocimiento propio, aunque estes seguro de la respuesta.
+      2. Si el CONTEXTO no contiene la respuesta, pon "puede_responder": false y explica
+         en "motivo" que el corpus indexado no cubre esa materia. NO intentes aproximarte
+         con el fragmento mas parecido: una respuesta segura y equivocada es peor que
+         ninguna respuesta.
+      3. Cuando puedas responder, cita SIEMPRE documento y pagina en "citas", copiando la
+         referencia que encabeza cada fragmento del CONTEXTO.
+      4. Si un fragmento proviene de una norma MODIFICATORIA, advierte en la respuesta
+         que se trata de una modificacion y que el texto original pudo cambiar.
+      5. Escribe claro y breve, sin jerga legal innecesaria. Quien pregunta no es abogado.
+
+    usuario: |
+      CONTEXTO:
+      {contexto}
+
+      PREGUNTA: {pregunta}
+
+      Devuelve el JSON siguiendo las reglas.
+
+  # Aviso que se anade cuando entre las fuentes hay una norma modificatoria.
+  nota_version: >-
+    Atencion: parte de esta respuesta proviene de una norma que MODIFICA otra. El texto
+    original pudo haber cambiado; verifica la version vigente antes de tomar decisiones.
+
+  mensajes:
+    abstencion_baja_similitud: >-
+      No encontre en los documentos indexados nada suficientemente parecido a tu
+      pregunta, asi que prefiero no responder antes que arriesgarme a inventar. El
+      corpus cubre la Ley 32069 y el Decreto Supremo 001-2026-EF.
+    abstencion_fuera_de_corpus: >-
+      Esa pregunta parece responderse en el Reglamento de la Ley 32069, que
+      deliberadamente NO forma parte del corpus indexado de este asistente.
+    error_api: >-
+      El modelo de generacion devolvio un error. Esto es un fallo del sistema, no una
+      respuesta: no interpretes el silencio como un "no".
+
+# -----------------------------------------------------------------------------
+#  Costos (Fase 3, punto 8)
+# -----------------------------------------------------------------------------
+# DeepSeek cobra distinto segun la hora. El enunciado exige aplicar el precio que
+# corresponda al momento de cada llamada y documentar de donde salen los precios.
+costos:
+  verificado_el: "2026-09-20"
+  fuente: "https://api-docs.deepseek.com/quick_start/pricing"
+  moneda: "USD"
+  # Horas PICO en UTC, de lunes a viernes. Fuera de esas franjas (y todo el fin de
+  # semana) se aplica la tarifa de valle, que es la mitad.
+  horas_pico_utc:
+    - {desde: "01:00", hasta: "04:00"}
+    - {desde: "06:00", hasta: "10:00"}
+  solo_dias_habiles: true
+  precios_por_millon:
+    pico:
+      entrada_cache_hit: 0.006
+      entrada_cache_miss: 0.30
+      salida: 1.20
+    valle:
+      entrada_cache_hit: 0.003
+      entrada_cache_miss: 0.15
+      salida: 0.60
+  archivo_log: "logs/costos.csv"
+
+# -----------------------------------------------------------------------------
+#  Evaluacion (Fase 4)
+# -----------------------------------------------------------------------------
+evaluacion:
+  archivo_preguntas: "eval/preguntas.csv"
+  k_valores: [1, 3, 5]
+  salida: "eval/resultados"
+
+# -----------------------------------------------------------------------------
+#  Innovacion: BM25 lexico frente a embeddings semanticos
+# -----------------------------------------------------------------------------
+innovacion:
+  bm25:
+    activo: true
+    # Preguntas coloquiales: donde BM25 deberia sufrir y los embeddings ganar.
+    # El enunciado sugiere exactamente esta comparacion.
+    salida: "eval/resultados/bm25_vs_embeddings.csv"
+
+# -----------------------------------------------------------------------------
+#  Interfaz (Fase 5)
+# -----------------------------------------------------------------------------
+app:
+  titulo: "Asistente Normativo — Contrataciones Publicas"
+  subtitulo: "Responde solo con la Ley 32069 y el DS 001-2026-EF. Si no esta ahi, lo dice."
+  ejemplos:
+    - "¿Que es una contratacion directa y cuando procede?"
+    - "Soy una MYPE, ¿tengo alguna ventaja para venderle al Estado?"
+    - "¿Que pasa si me adjudican y no firmo el contrato?"
+    - "¿Como preparo un ceviche?"

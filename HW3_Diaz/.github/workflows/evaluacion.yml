@@ -1,0 +1,103 @@
+# =============================================================================
+#  INNOVACION — Evaluacion automatica en cada push
+#
+#  El enunciado la sugiere asi: "GitHub Actions workflow that runs your evaluation
+#  on every push and fails if Recall@3 drops below a threshold you define".
+#
+#  La gracia de este workflow es que puede existir: la evaluacion de la Tarea 1 NO
+#  llama al modelo generativo, asi que corre sin ninguna credencial y sin gastar un
+#  centimo. Si evaluar costara dinero, un workflow que se dispara en cada push seria
+#  inviable, y en la practica la evaluacion se dejaria de correr.
+#
+#  El umbral se fija en 0.80 contra un Recall@3 medido de 0.85: deja margen para la
+#  variacion normal, pero detiene una regresion real (por ejemplo, cambiar el tamano
+#  de fragmento o el modelo de embeddings y empeorar la recuperacion sin notarlo).
+# =============================================================================
+
+name: Evaluacion RAG
+
+on:
+  push:
+    paths:
+      - "tarea1_rag_normativo/**"
+      - "requirements.txt"
+      - ".github/workflows/evaluacion.yml"
+  pull_request:
+  workflow_dispatch:
+
+env:
+  RECALL3_MINIMO: "0.80"
+
+jobs:
+  evaluar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # El modelo de embeddings pesa ~470 MB entre pesos y tokenizer. Cachearlo
+      # convierte una corrida de 4 minutos en una de 40 segundos.
+      - name: Cachear el modelo de embeddings
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ hashFiles('tarea1_rag_normativo/config.yaml') }}
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Comprobar la arquitectura (el motor no importa interfaces)
+        run: |
+          echo "Buscando imports de librerias de interfaz en los motores..."
+          if grep -REn '^\s*(import|from)\s' tarea1_rag_normativo/src/motor.py tarea2_radar/src/motor.py \
+             | grep -Ei 'streamlit|telegram|gradio|flask|fastapi'; then
+            echo "::error::El motor importa una libreria de interfaz"
+            exit 1
+          fi
+          echo "OK: ningun motor importa librerias de interfaz"
+
+      - name: Construir el indice
+        working-directory: tarea1_rag_normativo
+        run: python build_index.py
+
+      - name: Evaluar (sin llamar al modelo generativo)
+        working-directory: tarea1_rag_normativo
+        run: python eval/evaluar.py
+
+      - name: Comprobar que Recall@3 no ha bajado
+        working-directory: tarea1_rag_normativo
+        run: |
+          python - <<'PY'
+          import os, sys
+          import pandas as pd
+
+          minimo = float(os.environ["RECALL3_MINIMO"])
+          df = pd.read_csv("eval/resultados/barrido_umbral.csv")
+          r3 = float(df["recall@3"].max())
+
+          print(f"Recall@3 medido : {r3:.4f}")
+          print(f"Minimo exigido  : {minimo:.4f}")
+
+          if r3 < minimo:
+              print(f"::error::Recall@3 cayo a {r3:.4f}, por debajo de {minimo:.4f}")
+              sys.exit(1)
+          print("OK: la recuperacion no ha empeorado")
+          PY
+
+      - name: Publicar los resultados como artefacto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultados-evaluacion
+          path: |
+            tarea1_rag_normativo/eval/resultados/
+            tarea1_rag_normativo/data/processed/*.csv

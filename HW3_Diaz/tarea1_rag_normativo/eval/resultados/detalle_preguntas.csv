@@ -1,0 +1,26 @@
+id,tipo,estilo,pregunta,similitud_maxima,posicion_acierto,se_abstiene,doc_recuperado_1,pagina_recuperada_1
+P01,in_domain,formal,¿Cuáles son los principios rectores de la contratación pública?,0.9133,1.0,False,ley_32069,3
+P02,in_domain,formal,¿Qué es un contrato menor y bajo qué condiciones procede?,0.8754,1.0,False,ley_32069,19
+P03,in_domain,formal,¿En qué casos se declara desierto un procedimiento de selección?,0.9164,1.0,False,ley_32069,27
+P04,in_domain,formal,¿Qué garantías puede exigir la entidad contratante al contratista?,0.8693,2.0,False,ley_32069,4
+P05,in_domain,formal,¿Qué se considera fraccionamiento de una contratación?,0.8941,1.0,False,ley_32069,25
+P06,in_domain,formal,¿Cuál es la oportunidad para presentar un recurso de apelación?,0.8842,1.0,False,ley_32069,36
+P07,in_domain,formal,¿Qué tipos de adelantos puede entregar la entidad al contratista?,0.9119,1.0,False,ley_32069,32
+P08,in_domain,formal,¿Cuáles son los impedimentos para contratar con el Estado?,0.8836,2.0,False,ley_32069,14
+P09,in_domain,formal,¿Qué sanciones puede imponer el Tribunal de Contrataciones Públicas?,0.9168,1.0,False,ley_32069,44
+P10,in_domain,formal,¿Qué es la Pladicop y para qué sirve?,0.8865,1.0,False,ley_32069,21
+P11,in_domain,coloquial,"Soy una empresa chiquita, ¿el Estado me da alguna ventaja para venderl",0.8474,,False,ley_32069,55
+P12,in_domain,coloquial,"Si gano la buena pro y después no firmo el contrato, ¿qué me pueden ha",0.8706,4.0,False,ds_001_2026_ef,4
+P13,in_domain,coloquial,"Me sacaron del proceso y creo que fue injusto, ¿cuánto tiempo tengo pa",0.8496,,False,ley_32069,39
+P14,in_domain,coloquial,"Me piden una carta fianza, ¿eso qué es y para qué la quieren?",0.8493,1.0,False,ley_32069,29
+P15,in_domain,coloquial,¿Me pueden pagar algo por adelantado para comprar los materiales?,0.8675,1.0,False,ley_32069,32
+P16,in_domain,coloquial,"Si el contrato se cae por culpa de la entidad, ¿puedo ir a arbitraje?",0.8759,2.0,False,ley_32069,10
+P17,in_domain,formal,¿Qué modificación introdujo el decreto en los requisitos de calificaci,0.8606,1.0,False,ds_001_2026_ef,3
+P18,in_domain,formal,¿Se puede aprobar una prestación adicional de obra en vía de regulariz,0.9035,1.0,False,ds_001_2026_ef,9
+P19,in_domain,formal,¿Cómo se evalúan ahora las ofertas en la comparación de precios?,0.8824,1.0,False,ds_001_2026_ef,5
+P20,in_domain,formal,¿Qué cambió en el cronograma de los procedimientos de selección?,0.8605,1.0,False,ds_001_2026_ef,3
+P21,out_domain,coloquial,¿Cómo preparo un ceviche de pescado?,0.7934,,True,ds_001_2026_ef,11
+P22,out_domain,formal,¿Cuál es la capital de Francia?,0.7626,,True,ley_32069,46
+P23,out_domain,formal,¿Qué plazo exacto tiene el comité de selección para absolver consultas,0.8869,,False,ds_001_2026_ef,3
+P24,out_domain,formal,¿Qué anexos y formatos debe contener la declaración jurada de las base,0.8625,,False,ds_001_2026_ef,3
+P25,out_domain,coloquial,¿Cuánto cuesta la tasa de inscripción en el Registro Nacional de Prove,0.8587,,False,ley_32069,17

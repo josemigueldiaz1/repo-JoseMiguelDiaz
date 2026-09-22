@@ -1,0 +1,4 @@
+mes,url,archivo,mb,segundos,peticiones,desde_cache,sha_verificado
+2026-06,https://contratacionesabiertas.oece.gob.pe/api/v1/file/seace_v3/csv/2026/06/es,2026-06_seace_v3_csv_es.zip,12.39,0.0,0,True,False
+2026-07,https://contratacionesabiertas.oece.gob.pe/api/v1/file/seace_v3/csv/2026/07/es,2026-07_seace_v3_csv_es.zip,10.75,0.0,0,True,False
+2026-08,https://contratacionesabiertas.oece.gob.pe/api/v1/file/seace_v3/csv/2026/08/es,2026-08_seace_v3_csv_es.zip,8.7,0.0,0,True,False

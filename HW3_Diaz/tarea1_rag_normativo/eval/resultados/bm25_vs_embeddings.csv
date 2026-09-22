@@ -1,0 +1,21 @@
+id,estilo,pregunta,posicion_bm25,posicion_embeddings,bm25_acierta_top3,embeddings_acierta_top3
+P01,formal,¿Cuáles son los principios rectores de la contratación públi,2.0,1.0,True,True
+P02,formal,¿Qué es un contrato menor y bajo qué condiciones procede?,,1.0,False,True
+P03,formal,¿En qué casos se declara desierto un procedimiento de selecc,4.0,1.0,False,True
+P04,formal,¿Qué garantías puede exigir la entidad contratante al contra,3.0,2.0,True,True
+P05,formal,¿Qué se considera fraccionamiento de una contratación?,1.0,1.0,True,True
+P06,formal,¿Cuál es la oportunidad para presentar un recurso de apelaci,1.0,1.0,True,True
+P07,formal,¿Qué tipos de adelantos puede entregar la entidad al contrat,1.0,1.0,True,True
+P08,formal,¿Cuáles son los impedimentos para contratar con el Estado?,1.0,2.0,True,True
+P09,formal,¿Qué sanciones puede imponer el Tribunal de Contrataciones P,1.0,1.0,True,True
+P10,formal,¿Qué es la Pladicop y para qué sirve?,4.0,1.0,False,True
+P11,coloquial,"Soy una empresa chiquita, ¿el Estado me da alguna ventaja pa",,,False,False
+P12,coloquial,"Si gano la buena pro y después no firmo el contrato, ¿qué me",,4.0,False,False
+P13,coloquial,"Me sacaron del proceso y creo que fue injusto, ¿cuánto tiemp",,,False,False
+P14,coloquial,"Me piden una carta fianza, ¿eso qué es y para qué la quieren",3.0,1.0,True,True
+P15,coloquial,¿Me pueden pagar algo por adelantado para comprar los materi,4.0,1.0,False,True
+P16,coloquial,"Si el contrato se cae por culpa de la entidad, ¿puedo ir a a",,2.0,False,True
+P17,formal,¿Qué modificación introdujo el decreto en los requisitos de ,4.0,1.0,False,True
+P18,formal,¿Se puede aprobar una prestación adicional de obra en vía de,2.0,1.0,True,True
+P19,formal,¿Cómo se evalúan ahora las ofertas en la comparación de prec,2.0,1.0,True,True
+P20,formal,¿Qué cambió en el cronograma de los procedimientos de selecc,1.0,1.0,True,True
